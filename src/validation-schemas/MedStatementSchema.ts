@@ -1,122 +1,145 @@
 import * as Yup from "yup";
-import { Fields, SchemaFactoryData } from "../types/SchemaFactory";
+import { Fields } from "../types/SchemaFactory";
 
-export const MedStatementSchemaFactory = (): SchemaFactoryData => {
+export const MedStatementSchemaFactory = () => {
     const fields: Fields = {
         name: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         surname: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         patronymic: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         birthday: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         address: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         job: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         hospitalizationDate: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         dischargeDate: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         mainDiagnosis: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         complicationsDiagnosis: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         relatedDiagnosis: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         complaints: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         medicalHistory: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         KT: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         MRT: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         FBC: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         FEGDC: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         histology: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         MDKDecision: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         PT_PHTOperation: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         recommendations: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         date: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
         doctor: {
             min: 2,
             max: 100,
             placeholder: "lololo",
+            initial: "",
         },
     };
 

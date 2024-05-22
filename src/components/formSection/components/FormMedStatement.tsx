@@ -2,6 +2,8 @@ import { FC, ReactElement } from "react";
 import ControlButtons from "../../mainPage/controlButtons/ControlButtons";
 import { useParams } from "react-router-dom";
 import Input from "../../Input/Input";
+import { FormikProps, useFormik } from "formik";
+import { MedStatementSchemaFactory } from "../../../validation-schemas/MedStatementSchema";
 
 interface FormMedStatementProps {
     children?: ReactElement;
@@ -9,6 +11,14 @@ interface FormMedStatementProps {
 
 const FormMedStatement: FC<FormMedStatementProps> = () => {
     const { formId } = useParams();
+
+    const schema = MedStatementSchemaFactory();
+
+    // const form: FormikProps<typeof schema.schema> = useFormik({
+    //     initialValues: {},
+    //     validationSchema: schema.schema,
+    //     onSubmit: (values, helpers) => {},
+    // });
 
     return (
         <>
