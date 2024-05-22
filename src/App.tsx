@@ -1,7 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import MainPage from "./components/main-page/MainPage";
-import FormSection from "./components/form-section/FormSection";
+import MainPage from "./components/mainPage/MainPage";
+import FormSection from "./components/formSection/FormSection";
 
 const App = () => {
     return (
