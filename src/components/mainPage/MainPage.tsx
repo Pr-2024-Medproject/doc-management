@@ -7,9 +7,9 @@ interface MainPageProps {}
 
 const MainPage: FC<MainPageProps> = (_props) => {
     return (
-        <div className="flex items-center justify-center h-full">
+        <div className="flex items-center justify-center h-full w-full">
             <Sidebar />
-            <div className="border-2 border-red-500 h-full w-[80%] overflow-hidden">
+            <div className="border-2 border-red-500 h-full w-full overflow-hidden">
                 <div className="h-[10%]">
                     <NavigationPanel />
                 </div>
