@@ -10,8 +10,12 @@ const MainPage: FC<MainPageProps> = (_props) => {
         <div className="flex items-center justify-center h-full">
             <Sidebar />
             <div className="border-2 border-red-500 h-full w-[80%] overflow-hidden">
-                <NavigationPanel />
-                <Outlet />
+                <div className="h-[10%]">
+                    <NavigationPanel />
+                </div>
+                <div className="h-[90%]">
+                    <Outlet />
+                </div>
             </div>
         </div>
     );

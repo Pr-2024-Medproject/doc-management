@@ -4,15 +4,11 @@ interface ControlButtonsProps {}
 
 const ControlButtons: FC<ControlButtonsProps> = () => {
     return (
-        <div className="border-2 border-emerald-500 h-[20%] p-4 flex justify-evenly">
-            <div className="p-2 border-emerald-800 border-2">
-                Save
-            </div>
-            <div className="p-2 border-emerald-800 border-2">
-                Generate .doc
-            </div>
+        <div className="flex justify-evenly p-4 border-8 border-emerald-500 justify-self-end">
+            <div className="p-2 border-emerald-800">Buttons</div>
+            <div className="p-2 border-emerald-800">Buttons</div>
         </div>
     );
-};
+}
 
 export default ControlButtons;
