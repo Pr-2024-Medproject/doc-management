@@ -2,8 +2,13 @@ import { FC, ReactElement } from "react";
 import ControlButtons from "../../mainPage/controlButtons/ControlButtons";
 import { useParams } from "react-router-dom";
 import Input from "../../Input/Input";
-import { FormikProps, useFormik } from "formik";
-import { MedStatementSchemaFactory } from "../../../validation-schemas/MedStatementSchema";
+import { useFormik } from "formik";
+import {
+    InferredMedStatement,
+    medStatementFields,
+    medStatementSchema,
+} from "../../../validation-schemas/MedStatementSchema";
+import { MedStatementFieldsType } from "../../../types/models/MedStatement";
 
 interface FormMedStatementProps {
     children?: ReactElement;
@@ -12,13 +17,16 @@ interface FormMedStatementProps {
 const FormMedStatement: FC<FormMedStatementProps> = () => {
     const { formId } = useParams();
 
-    const schema = MedStatementSchemaFactory();
+    const initialValues = Object.entries(medStatementFields).reduce((acc, [key, value]) => {
+        acc[key as MedStatementFieldsType] = value.initial;
+        return acc;
+    }, {} as InferredMedStatement);
 
-    // const form: FormikProps<typeof schema.schema> = useFormik({
-    //     initialValues: {},
-    //     validationSchema: schema.schema,
-    //     onSubmit: (values, helpers) => {},
-    // });
+    const form = useFormik({
+        initialValues,
+        validationSchema: medStatementSchema,
+        onSubmit: (values, helpers) => {},
+    });
 
     return (
         <>
