@@ -1,6 +1,7 @@
 import { FC, ReactElement } from "react";
 import ControlButtons from "../../mainPage/controlButtons/ControlButtons";
 import { useParams } from "react-router-dom";
+import Input from "../../Input/Input";
 
 interface FormMedStatementProps {
     children?: ReactElement;
@@ -12,6 +13,15 @@ const FormMedStatement: FC<FormMedStatementProps> = () => {
     return (
         <>
             <div className="flex-grow overflow-hidden overflow-y-auto">
+                <Input
+                    className=" w-16"
+                    label="Test"
+                    type="text"
+                    value={""}
+                    name="test"
+                    placeholder="write"
+                    onChange={() => 1}
+                />
                 <h2>Any form with id [{formId}]</h2>
                 <p>
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
