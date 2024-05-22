@@ -6,7 +6,7 @@ import FormSection from "./components/form-section/FormSection";
 const App = () => {
     return (
         <Routes>
-            <Route path="/doc-management" element={<MainPage />}>
+            <Route path="/doc-management/" element={<MainPage />}>
                 <Route index element={<h1>lololo</h1>} />
                 <Route path="form/:formId" element={<FormSection />} />
             </Route>
