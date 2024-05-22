@@ -9,7 +9,7 @@ const MainPage: FC<MainPageProps> = (_props) => {
     return (
         <div className="flex items-center justify-center h-full">
             <Sidebar />
-            <div className="border-2 border-red-500 h-full w-[80%]">
+            <div className="border-2 border-red-500 h-full w-full">
                 <NavigationPanel />
                 <Outlet />
             </div>

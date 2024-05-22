@@ -1,11 +1,30 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import burgerMenu from "../../../assets/burger-menu.svg";
+import SideBarData from "./components/SideBarData";
 
 interface SidebarProps {}
 
-const Sidebar: FC<SidebarProps> = (props) => {
+const Sidebar: FC<SidebarProps> = (_props) => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen((value) => !value);
+    };
+
     return (
-        <aside className="border-2 border-cyan-300 w-[20%]">Sidebar</aside>
+        <aside
+            className={`flex flex-col border-4 border-cyan-300 h-full p-4 relative transition-all duration-300 ${
+                isSidebarOpen ? "w-[40%]" : "w-20"
+            }`}
+        >
+            {isSidebarOpen && <SideBarData />}
+            <div className={`flex justify-end items-end ${isSidebarOpen ? "" : "h-full"}`}>
+                <button onClick={toggleSidebar} className="w-14">
+                    <img src={burgerMenu} alt="menuIcon" />
+                </button>
+            </div>
+        </aside>
     );
-}
+};
 
 export default Sidebar;
