@@ -6,7 +6,7 @@ type SidebarProps = {};
 
 const SideBarData: FC<SidebarProps> = (_props) => {
     return (
-        <div className="flex-grow">
+        <div className="flex-grow overflow-hidden overflow-y-auto">
             <PatientSearch />
             <Patients />
         </div>
