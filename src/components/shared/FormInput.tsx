@@ -20,7 +20,7 @@ function FormInput<FieldsType>(props: FormInputProps<FieldsType>) {
             value={props.form.values[props.fieldName] as string | number}
             name={props.fieldName as string}
             placeholder={props.fields[props.fieldName].placeholder}
-            error={!!props.form.errors[props.fieldName]} // TODO :: should be visible formik error
+            error={props.form.errors[props.fieldName] as string}
             disabled={props.disabled}
             className={props.className}
             onChange={props.form.handleChange}

@@ -6,7 +6,7 @@ interface InputProps {
     value: string | number;
     name?: string;
     placeholder?: string;
-    error?: boolean;
+    error?: string;
     disabled?: boolean;
     className?: string;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -44,7 +44,7 @@ const Input: FC<InputProps> = ({
             />
             {error && (
                 <p className="mt-1 ml-3 text-sm font-normal text-red-500">
-                    Input filed thow an error!
+                    {error}
                 </p>
             )}
         </div>
