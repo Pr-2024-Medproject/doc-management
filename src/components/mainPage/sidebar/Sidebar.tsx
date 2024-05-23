@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import burgerMenu from "../../../assets/burger-menu.svg";
+import BurgerMenuIcon from "../../../assets/burger-menu.svg";
 import SideBarData from "./components/SideBarData";
 
 interface SidebarProps {}
@@ -18,9 +18,10 @@ const Sidebar: FC<SidebarProps> = (_props) => {
             }`}
         >
             {isSidebarOpen && <SideBarData />}
+
             <div className={`flex justify-end items-end ${isSidebarOpen ? "" : "h-full"}`}>
                 <button onClick={toggleSidebar} className="w-14">
-                    <img src={burgerMenu} alt="menuIcon" />
+                    <img src={BurgerMenuIcon} alt="menuIcon" />
                 </button>
             </div>
         </aside>
