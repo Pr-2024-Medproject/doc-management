@@ -1,125 +1,177 @@
-import { FC, ReactElement } from "react";
+import { FC } from "react";
 import ControlButtons from "../../mainPage/controlButtons/ControlButtons";
-import { useParams } from "react-router-dom";
-import Input from "../../Input/Input";
+import FormInput from "../../shared/FormInput";
 import {
     medStatementFields,
     medStatementSchema,
 } from "../../../validation-schemas/MedStatementSchema";
 import { MedStatementModel } from "../../../types/models/MedStatement";
 import useCustomFormik from "../../../hooks/useCustomFormik";
+import { FormInfo } from "../../../types/Forms";
 
 interface FormMedStatementProps {
-    children?: ReactElement;
+    formInfo: FormInfo;
 }
 
-const FormMedStatement: FC<FormMedStatementProps> = () => {
-    const { formId } = useParams();
-
-   const form = useCustomFormik<MedStatementModel>({
+const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo }) => {
+    const { form, saveHandler, printHandler } = useCustomFormik<MedStatementModel>({
         fields: medStatementFields,
         schema: medStatementSchema,
-        onSubmit: () => {},
-   });
+        saveCallback: (values, _helpers) => {
+            console.log(`Form ${formInfo.id} [${formInfo.name}] saved successfully.`);
+            console.log(`DATA => `, values);
+        },
+        printCallback: (values, _helpers) => {
+            console.log(`Form ${formInfo.id} [${formInfo.name}] printed successfully.`);
+            console.log(`DATA => `, values);
+        },
+    });
 
     return (
         <>
             <div className="flex-grow overflow-hidden overflow-y-auto">
-                <Input
-                    className=" w-16"
-                    label="Test"
+                <h1>{formInfo.name}</h1>
+
+                <FormInput<MedStatementModel>
                     type="text"
-                    value={""}
-                    name="test"
-                    placeholder="write"
-                    onChange={() => 1}
+                    fields={medStatementFields}
+                    fieldName="name"
+                    form={form}
                 />
-                <h2>Any form with id [{formId}]</h2>
-                <p>
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                    id est laborum.quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                    qui officia deserunt mollit anim id est laborum.quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur. quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                    laborum.quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                    id est laborum.quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                    qui officia deserunt mollit anim id est laborum.quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur. quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                    laborum. quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                    id est laborum. [END]
-                </p>
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="surname"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="patronymic"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="date"
+                    fields={medStatementFields}
+                    fieldName="birthday"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="address"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="job"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="date"
+                    fields={medStatementFields}
+                    fieldName="hospitalizationDate"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="date"
+                    fields={medStatementFields}
+                    fieldName="dischargeDate"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="mainDiagnosis"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="complicationsDiagnosis"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="relatedDiagnosis"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="complaints"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="medicalHistory"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="KT"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="MRT"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="FBC"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="FEGDC"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="histology"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="MDKDecision"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="PT_PHTOperation"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="recommendations"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="date"
+                    fields={medStatementFields}
+                    fieldName="date"
+                    form={form}
+                />
+                <FormInput<MedStatementModel>
+                    type="text"
+                    fields={medStatementFields}
+                    fieldName="doctor"
+                    form={form}
+                />
             </div>
-            <ControlButtons />
+            <ControlButtons saveCallback={saveHandler} printCallback={printHandler} />
         </>
     );
 };
