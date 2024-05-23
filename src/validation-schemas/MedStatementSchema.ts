@@ -1,8 +1,8 @@
-import { object, string, InferType } from "yup";
+import { object, string } from "yup";
 import { Fields } from "../types/SchemaFactory";
-import { MedStatementFieldsType } from "../types/models/MedStatement";
+import { MedStatementModel } from "../types/models/MedStatement";
 
-export const medStatementFields: Fields<MedStatementFieldsType> = {
+export const medStatementFields: Fields<MedStatementModel> = {
     name: {
         min: 2,
         max: 100,
@@ -315,5 +315,3 @@ export const medStatementSchema = object().shape({
         .max(medStatementFields.doctor.max, "Maximal length is " + medStatementFields.doctor.max)
         .required("Required field"),
 });
-
-export type InferredMedStatement = InferType<typeof medStatementSchema>;

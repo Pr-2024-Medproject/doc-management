@@ -1,3 +1,26 @@
-import { MedStatementFields } from "../../constants/MedStatement";
-
-export type MedStatementFieldsType = (typeof MedStatementFields)[number];
+export interface MedStatementModel {
+    id?: string;
+    name: string,
+    surname: string,
+    patronymic: string,
+    birthday: Date,
+    address: string,
+    job: string,
+    hospitalizationDate: Date,
+    dischargeDate: Date,
+    mainDiagnosis: string,
+    complicationsDiagnosis: string,
+    relatedDiagnosis: string,
+    complaints: string,
+    medicalHistory: string,
+    KT: string,
+    MRT: string,
+    FBC: string,
+    FEGDC: string,
+    histology: string,
+    MDKDecision: string,
+    PT_PHTOperation: string,
+    recommendations: string,
+    date: Date,
+    doctor: string,
+}

@@ -1,23 +1,26 @@
-// import { useFormik } from "formik";
+import { FormikHelpers, useFormik } from "formik";
+import { FieldMetaData, Fields } from "../types/SchemaFactory";
+import { AnyObject, ObjectSchema } from "yup";
 
-// interface UseCustomFormikProps<U> {
-//     fields: U;
-//     medStatementSchema:
-// }
+interface UseCustomFormikProps<T> {
+    fields: Fields<T>;
+    schema: ObjectSchema<AnyObject>;
+    onSubmit: (values: Partial<T>, formikHelpers: FormikHelpers<Partial<T>>) => void | Promise<any>
+}
 
-// function useCustomFormik<T, U, I>({ fields }: UseCustomFormikProps<U>) {
-//     const initialValues = Object.entries(fields).reduce((acc, [key, value]) => {
-//         acc[key as I] = value.initial;
-//         return acc;
-//     }, {} as T);
+function useCustomFormik<FieldsType>({ fields, schema, onSubmit }: UseCustomFormikProps<FieldsType>) {
+    const initialValues = Object.entries(fields).reduce((acc, [key, value]) => {
+        (acc as any)[key as keyof FieldsType] = (value as FieldMetaData).initial;
+        return acc;
+    }, {} as Partial<FieldsType>);
 
-//     const form = useFormik({
-//         initialValues,
-//         validationSchema: medStatementSchema,
-//         onSubmit: (values, helpers) => {},
-//     });
+    const form = useFormik({
+        initialValues,
+        validationSchema: schema,
+        onSubmit,
+    });
 
-//     return form;
-// }
+    return form;
+}
 
-// export default useCustomFormik;
+export default useCustomFormik;
