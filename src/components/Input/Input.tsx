@@ -1,15 +1,15 @@
 import { ChangeEvent, FC } from "react";
 
 interface InputProps {
-    type: "text" | "number" | "email" | "password" | "date";
+    type: "text" | "number" | "email" | "password" | "date" | "button";
     label?: string;
     value: string | number;
-    name: string;
-    placeholder: string;
+    name?: string;
+    placeholder?: string;
     error?: boolean;
     disabled?: boolean;
     className?: string;
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<InputProps> = ({
@@ -23,8 +23,10 @@ const Input: FC<InputProps> = ({
     className,
     onChange,
 }) => {
+    const buttonStyle = type === "button" ? "cursor-pointer" : "";
+
     return (
-        <div className="input-wrapper">
+        <div className="flex flex-col">
             {label && (
                 <label className="block mb-2 text-lg font-semibold text-[#344054]" htmlFor={label}>
                     {label}
@@ -38,7 +40,7 @@ const Input: FC<InputProps> = ({
                 placeholder={placeholder}
                 onChange={onChange}
                 disabled={disabled}
-                className={`min-w-64 px-3 py-2 text-base font-normal text-[#344054] bg-white border border-[#d0d5dd] shadow-sm rounded-lg placeholder-[#667085] ${className}`}
+                className={`min-w-64 px-3 py-2 text-base text-[#344054] bg-white border border-[#d0d5dd] shadow-sm rounded-lg placeholder-[#667085] ${buttonStyle} ${className}`}
             />
             {error && (
                 <p className="mt-1 ml-3 text-sm font-normal text-red-500">
