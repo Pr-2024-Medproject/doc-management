@@ -1,5 +1,5 @@
 import { FormikProps } from "formik";
-import Input from "../Input/Input";
+import Input from "./Input";
 import { Fields } from "../../types/SchemaFactory";
 
 

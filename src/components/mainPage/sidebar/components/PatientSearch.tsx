@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from "react";
 import SearchIcon from "../../../../assets/search.svg";
-import Input from "../../../Input/Input";
+import Input from "../../../shared/Input";
 
 interface PatientSearchProps {
     patientName: string;

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Input from "../../../Input/Input";
+import Input from "../../../shared/Input";
 
 interface PatientsProps {
     patients: string[];
