@@ -1,16 +1,23 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import Sidebar from "./sidebar/Sidebar";
+import NavigationPanel from "./navigationPanel/NavigationPanel";
 
 interface MainPageProps {}
 
 const MainPage: FC<MainPageProps> = (_props) => {
     return (
-        <>
-            <h1 className="text-blue-500 text-center text-2xl">Clinic documentation management</h1>
-            <Link to="form/dsfsfsd">Test link</Link>
-            <Outlet />
-        </>
+        <div className="flex items-center justify-center h-full w-full">
+            <Sidebar />
+            <div className="border-2 border-red-500 h-full w-full overflow-hidden">
+                <div className="h-[10%]">
+                    <NavigationPanel />
+                </div>
+                <div className="h-[90%]">
+                    <Outlet />
+                </div>
+            </div>
+        </div>
     );
 };
 
