@@ -6,6 +6,10 @@ interface PatientsProps {
 }
 
 const Patients: FC<PatientsProps> = ({ patients }) => {
+    const handleClick = (patient: string) => {
+        console.log(patient);
+    };
+
     return (
         <div className="flex flex-col gap-4 p-4 border-2 border-gray-300 w-full bg-white rounded-md shadow-sm">
             {patients.map((patient, i) => (
@@ -13,8 +17,9 @@ const Patients: FC<PatientsProps> = ({ patients }) => {
                     type="button"
                     value={patient}
                     key={patient + i}
-                    className={`text-lg font-medium rounded-md text-left ${
-                        i % 2 === 0 ? "text-gray-900 bg-gray-200" : "text-gray-700"
+                    onClick={() => handleClick(patient)}
+                    className={`text-lg font-medium rounded-md text-left hover:bg-gray-200 ${
+                        i % 2 === 0 ? "text-gray-900 bg-gray-100" : "text-gray-700"
                     }`}
                 />
             ))}
