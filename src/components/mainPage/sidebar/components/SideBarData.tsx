@@ -2,26 +2,47 @@ import { ChangeEvent, FC, useState } from "react";
 import PatientSearch from "./PatientSearch";
 import Patients from "./Patients";
 import useLocalStorage from "../../../../hooks/useLocalStorage";
+import { MedStatementPatient } from "../../../../types/models/MedStatement";
 
 interface SidebarProps {}
 
 const SideBarData: FC<SidebarProps> = (_props) => {
     const [patientName, setPatientName] = useState("");
-    const mockPatients = [
-        "John Doe",
-        "Jane Smith",
-        "Michael Johnson",
-        "Emily Davis",
-        "William Brown",
-        "Olivia Wilson",
-        "James Taylor",
-        "Sophia Moore",
-        "Liam Anderson",
-        "Isabella Thomas",
-        "Ethan Jackson",
-        "Ethan Jackson",
-    ];
-    const [patients] = useLocalStorage<string[]>("patients", mockPatients);
+    const patient: MedStatementPatient = {
+        id: "123",
+        name: "John",
+        surname: "Doe",
+        patronymic: "Smith",
+        birthday: new Date("1990-01-01"),
+        history: {
+            "Виписка ОГП ОЦО": [
+                {
+                    address: "123 Main St",
+                    job: "Engineer",
+                    hospitalizationDate: new Date("2023-01-01"),
+                    dischargeDate: new Date("2023-01-10"),
+                    mainDiagnosis: "Diagnosis A",
+                    complicationsDiagnosis: "Complication A",
+                    relatedDiagnosis: "Related A",
+                    complaints: "Complaint A",
+                    medicalHistory: "History A",
+                    KT: "KT Data",
+                    MRT: "MRT Data",
+                    FBC: "FBC Data",
+                    FEGDC: "FEGDC Data",
+                    histology: "Histology Data",
+                    MDKDecision: "Decision A",
+                    PT_PHTOperation: "Operation A",
+                    recommendations: "Recommendation A",
+                    date: new Date("2023-01-11"),
+                    doctor: "Dr. Smith",
+                },
+            ],
+        },
+    };
+    const mockPatients = [patient];
+    const [patients] = useLocalStorage<MedStatementPatient[]>("patients", mockPatients);
+    const patientsSideBarData = patients.map((patient, i) => ({ name: patient.name, i }));
 
     const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
         setPatientName(e.target.value);
@@ -30,7 +51,7 @@ const SideBarData: FC<SidebarProps> = (_props) => {
     return (
         <div className="flex-grow overflow-hidden overflow-y-auto">
             <PatientSearch patientName={patientName} changeInputValue={changeInputValue} />
-            <Patients patients={patients} />
+            <Patients patients={patientsSideBarData} />
         </div>
     );
 };

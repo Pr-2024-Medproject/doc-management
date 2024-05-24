@@ -2,7 +2,7 @@ import { FC } from "react";
 import Input from "../../../shared/Input";
 
 interface PatientsProps {
-    patients: string[];
+    patients: Array<{ name: string; i: number }>;
 }
 
 const Patients: FC<PatientsProps> = ({ patients }) => {
@@ -17,9 +17,9 @@ const Patients: FC<PatientsProps> = ({ patients }) => {
             {patients.map((patient, i) => (
                 <Input
                     type="button"
-                    value={patient}
-                    key={patient + i}
-                    onClick={() => handleClick(patient)}
+                    value={patient.name}
+                    key={patient.name + i}
+                    onClick={() => handleClick(patient.name)}
                     className={`text-lg font-medium rounded-md text-left hover:bg-gray-200 ${
                         i % 2 === 0 ? "text-gray-900 bg-gray-100" : "text-gray-700"
                     }`}

@@ -1,7 +1,4 @@
-import { FormInfo } from "../types/Forms";
-
-export const FORMS: FormInfo[] = [
+export const FORMS = [
     { id: 0, name: "Форма не знайдена" },
-    { id: 1, name: "Виписка ОГП ОЦО" }
-];
-
+    { id: 1, name: "Виписка ОГП ОЦО" },
+] as const;
