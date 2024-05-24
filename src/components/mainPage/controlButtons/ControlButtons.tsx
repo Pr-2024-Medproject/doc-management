@@ -1,16 +1,28 @@
 import { FC } from "react";
+import Input from "../../shared/Input";
 
 interface ControlButtonsProps {
+    disabled: boolean;
     saveCallback: () => void;
     printCallback: () => void;
 }
 
 const ControlButtons: FC<ControlButtonsProps> = (props) => {
     return (
-        <div className="flex justify-end p-4 pr-20 border-8 border-emerald-500 justify-self-end">
+        <div className="flex justify-end p-4 pr-20 justify-self-end">
             <div className="flex gap-6">
-                <button type="button" onClick={props.saveCallback} className="p-2 border-2 border-emerald-800">Save</button>
-                <button type="button" onClick={props.printCallback} className="p-2 border-2 border-emerald-800">Print</button>
+                <Input
+                    type="button"
+                    value="Save"
+                    disabled={props.disabled}
+                    onClick={props.saveCallback}
+                />
+                <Input
+                    type="button"
+                    value="Print"
+                    disabled={props.disabled}
+                    onClick={props.printCallback}
+                />
             </div>
         </div>
     );

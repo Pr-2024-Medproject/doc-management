@@ -6,7 +6,7 @@ interface NavigationPanelProps {}
 
 const NavigationPanel: FC<NavigationPanelProps> = () => {
     return (
-        <nav className="h-full p-4 border-2 border-red-500 flex justify-evenly">
+        <nav className="h-full p-4 flex justify-evenly">
             {FORMS.map((info) => <NavigationItem key={info.key} formInfo={info} />)}
         </nav>
     );

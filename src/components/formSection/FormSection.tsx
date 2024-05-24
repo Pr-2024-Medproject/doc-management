@@ -9,7 +9,7 @@ interface FormSectionProps {}
 const FormSection: FC<FormSectionProps> = (_props) => {
     const formInfo = useFormInfo();
     return (
-        <section className="flex flex-col h-full border-8 border-red-800">
+        <section className="flex flex-col h-full">
             {formInfo.key === FormsKeys.FORM_PATIENT_DATA ? (
                 <FormPatientData formInfo={formInfo} />
             ) : formInfo.key === FormsKeys.FORM_MED_STATEMENT ? (
