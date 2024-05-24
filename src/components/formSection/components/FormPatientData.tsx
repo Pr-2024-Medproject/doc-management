@@ -41,10 +41,10 @@ const FormPatientData: FC<FormPatientDataProps> = ({ formInfo }) => {
                     );
                 })}
             </div>
-            <ControlButtons 
-                disabled={form.isValid}
-                saveCallback={saveHandler} 
-                printCallback={printHandler} 
+            <ControlButtons
+                disabled={!form.isValid}
+                saveCallback={saveHandler}
+                printCallback={printHandler}
             />
         </>
     );

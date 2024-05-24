@@ -22,11 +22,14 @@ const Input: FC<InputProps> = ({
     placeholder,
     error,
     disabled,
-    className,
+    className = "",
     onChange,
     onClick,
 }) => {
-    const buttonStyle = type === "button" ? "cursor-pointer" : "";
+    const buttonStyle =
+        type === "button"
+            ? "cursor-pointer hover:bg-gray-200 disabled:opacity-60 disabled:bg-transparent disabled:cursor-not-allowed"
+            : "";
 
     return (
         <div className="flex flex-col">

@@ -35,9 +35,9 @@ export const patientDataFields: Fields<PatientData> = {
     age: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Вік",
         initial: "",
-        type: "text",
+        type: "number",
     },
     address: {
         min: 2,
@@ -307,7 +307,7 @@ export const patientDataFields: Fields<PatientData> = {
         initial: "",
         type: "text",
     },
-    
+
     complaints: {
         min: 2,
         max: 100,
