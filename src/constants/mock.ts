@@ -12,6 +12,7 @@ export const patient: Patient = {
     job: "Engineer",
     hospitalizationDate: new Date("2023-01-01"),
     dischargeDate: new Date("2023-01-10"),
+    hospitalizationDiagnosis: "Diagnosis A",
     mainDiagnosis: "Diagnosis A",
     complicationsDiagnosis: "Complication A",
     relatedDiagnosis: "Related A",

@@ -15,6 +15,7 @@ export interface PatientData {
     job: string;
     hospitalizationDate: Date;
     dischargeDate: Date;
+    hospitalizationDiagnosis: string;
     mainDiagnosis: string;
     complicationsDiagnosis: string;
     relatedDiagnosis: string;
