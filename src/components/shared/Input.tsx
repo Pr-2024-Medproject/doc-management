@@ -1,7 +1,8 @@
 import { ChangeEvent, FC, MouseEvent } from "react";
+import { InputType } from "../../types/Input";
 
 interface InputProps {
-    type: "text" | "number" | "email" | "password" | "date" | "button";
+    type: InputType | "button";
     label?: string;
     value: string | number;
     name?: string;
