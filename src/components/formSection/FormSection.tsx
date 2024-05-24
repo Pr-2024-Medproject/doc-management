@@ -8,11 +8,6 @@ interface FormSectionProps {}
 
 const FormSection: FC<FormSectionProps> = (_props) => {
     const formInfo = useFormInfo();
-
-    if (!formInfo.id) {
-        return <h1>{formInfo.name}</h1>;
-    }
-
     return (
         <section className="flex flex-col h-full border-8 border-red-800">
             {formInfo.key === FormsKeys.FORM_PATIENT_DATA ? (
