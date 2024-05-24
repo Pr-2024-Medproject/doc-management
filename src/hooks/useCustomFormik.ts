@@ -16,9 +16,12 @@ interface UseCustomFormik<T> {
     printHandler: () => void;
 }
 
-function useCustomFormik<FieldsType>(
-    { fields, schema, saveCallback, printCallback }: UseCustomFormikProps<FieldsType>
-): UseCustomFormik<FieldsType> {
+function useCustomFormik<FieldsType>({
+    fields,
+    schema,
+    saveCallback,
+    printCallback,
+}: UseCustomFormikProps<FieldsType>): UseCustomFormik<FieldsType> {
     const [saveMode, setSaveMode] = useState(false);
 
     const initialValues = Object.entries(fields).reduce((acc, [key, value]) => {
@@ -37,12 +40,12 @@ function useCustomFormik<FieldsType>(
     const saveHandler = () => {
         setSaveMode(true);
         form.handleSubmit();
-    }
+    };
 
     const printHandler = () => {
         setSaveMode(false);
         form.handleSubmit();
-    }
+    };
 
     return { form, saveHandler, printHandler };
 }
