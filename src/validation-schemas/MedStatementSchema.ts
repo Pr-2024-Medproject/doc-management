@@ -122,7 +122,7 @@ export const medStatementFields: Fields<MedStatementModel> = {
         initial: "",
         type: "text",
     },
-    histology: {
+    histology_cytology: {
         min: 2,
         max: 100,
         placeholder: "Гістологія/цитологія",
@@ -157,7 +157,7 @@ export const medStatementFields: Fields<MedStatementModel> = {
         initial: "",
         type: "date",
     },
-    doctor: {
+    treatingDoctor: {
         min: 2,
         max: 100,
         placeholder: "Лікуючий лікар",

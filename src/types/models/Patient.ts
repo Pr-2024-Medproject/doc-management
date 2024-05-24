@@ -15,10 +15,9 @@ export interface PatientData {
     job: string;
     hospitalizationDate: Date;
     dischargeDate: Date;
-    complicationsDiagnosis: string;
     mainDiagnosis: string;
-    complication: string;
-    concomitant: string;
+    complicationsDiagnosis: string;
+    relatedDiagnosis: string;
     MKBcipher: string;
     operationDate: Date;
     operationName: string;
