@@ -2,7 +2,7 @@ import { ChangeEvent, FC, useState } from "react";
 import PatientSearch from "./PatientSearch";
 import Patients from "./Patients";
 import useLocalStorage from "../../../../hooks/useLocalStorage";
-import { FormsKeys } from "../../../../constants/Forms";
+// import { FormsKeys } from "../../../../constants/Forms";
 import { Patient } from "../../../../types/models/Patient";
 
 interface SidebarProps {}
