@@ -1,317 +1,169 @@
-import { object, string } from "yup";
 import { Fields } from "../types/SchemaFactory";
 import { MedStatementModel } from "../types/models/MedStatement";
+import { schemaFactory } from "./SchemaFactory";
 
 export const medStatementFields: Fields<MedStatementModel> = {
     name: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Ім'я",
         initial: "",
+        type: "text",
     },
     surname: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Прізвище",
         initial: "",
+        type: "text",
     },
     patronymic: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "По батькові",
         initial: "",
+        type: "text",
     },
     birthday: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Дата народження",
         initial: "",
+        type: "date",
     },
     address: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Місце проживання",
         initial: "",
+        type: "text",
     },
     job: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Місце роботи",
         initial: "",
+        type: "text",
     },
     hospitalizationDate: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Дата госпіталізації",
         initial: "",
+        type: "date",
     },
     dischargeDate: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Дата вибуття зі стаціонару",
         initial: "",
+        type: "date",
     },
     mainDiagnosis: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Основний діагноз",
         initial: "",
+        type: "text",
     },
     complicationsDiagnosis: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Ускладнення (діагноз)",
         initial: "",
+        type: "text",
     },
     relatedDiagnosis: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Супутній діагноз",
         initial: "",
+        type: "text",
     },
     complaints: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Скарги",
         initial: "",
+        type: "text",
     },
     medicalHistory: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Анамнез хвороби",
         initial: "",
+        type: "text",
     },
     KT: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "КТ ОГК, ОБП, ОМТ, ГМ",
         initial: "",
+        type: "text",
     },
     MRT: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "МРТ ГМ",
         initial: "",
+        type: "text",
     },
     FBC: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "ФБС",
         initial: "",
+        type: "text",
     },
     FEGDC: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "ФЕГДС",
         initial: "",
+        type: "text",
     },
-    histology: {
+    histology_cytology: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Гістологія/цитологія",
         initial: "",
+        type: "text",
     },
     MDKDecision: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Рішення МДК",
         initial: "",
+        type: "text",
     },
     PT_PHTOperation: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Операція / ПТ / ПХТ",
         initial: "",
+        type: "text",
     },
     recommendations: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Лікувальні і трудові рекомендації",
         initial: "",
+        type: "text",
     },
     date: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Дата",
         initial: "",
+        type: "date",
     },
-    doctor: {
+    treatingDoctor: {
         min: 2,
         max: 100,
-        placeholder: "lololo",
+        placeholder: "Лікуючий лікар",
         initial: "",
+        type: "text",
     },
 };
 
-export const medStatementSchema = object().shape({
-    name: string()
-        .min(medStatementFields.name.min, "Minimal length is " + medStatementFields.name.min)
-        .max(medStatementFields.name.max, "Maximal length is " + medStatementFields.name.max)
-        .required("Required field"),
-    surname: string()
-        .min(medStatementFields.surname.min, "Minimal length is " + medStatementFields.surname.min)
-        .max(medStatementFields.surname.max, "Maximal length is " + medStatementFields.surname.max)
-        .required("Required field"),
-    patronymic: string()
-        .min(
-            medStatementFields.patronymic.min,
-            "Minimal length is " + medStatementFields.patronymic.min,
-        )
-        .max(
-            medStatementFields.patronymic.max,
-            "Maximal length is " + medStatementFields.patronymic.max,
-        )
-        .required("Required field"),
-    birthday: string()
-        .min(
-            medStatementFields.birthday.min,
-            "Minimal length is " + medStatementFields.birthday.min,
-        )
-        .max(
-            medStatementFields.birthday.max,
-            "Maximal length is " + medStatementFields.birthday.max,
-        )
-        .required("Required field"),
-    address: string()
-        .min(medStatementFields.address.min, "Minimal length is " + medStatementFields.address.min)
-        .max(medStatementFields.address.max, "Maximal length is " + medStatementFields.address.max)
-        .required("Required field"),
-    job: string()
-        .min(medStatementFields.job.min, "Minimal length is " + medStatementFields.job.min)
-        .max(medStatementFields.job.max, "Maximal length is " + medStatementFields.job.max)
-        .required("Required field"),
-    hospitalizationDate: string()
-        .min(
-            medStatementFields.hospitalizationDate.min,
-            "Minimal length is " + medStatementFields.hospitalizationDate.min,
-        )
-        .max(
-            medStatementFields.hospitalizationDate.max,
-            "Maximal length is " + medStatementFields.hospitalizationDate.max,
-        )
-        .required("Required field"),
-    dischargeDate: string()
-        .min(
-            medStatementFields.dischargeDate.min,
-            "Minimal length is " + medStatementFields.dischargeDate.min,
-        )
-        .max(
-            medStatementFields.dischargeDate.max,
-            "Maximal length is " + medStatementFields.dischargeDate.max,
-        )
-        .required("Required field"),
-    mainDiagnosis: string()
-        .min(
-            medStatementFields.mainDiagnosis.min,
-            "Minimal length is " + medStatementFields.mainDiagnosis.min,
-        )
-        .max(
-            medStatementFields.mainDiagnosis.max,
-            "Maximal length is " + medStatementFields.mainDiagnosis.max,
-        )
-        .required("Required field"),
-    complicationsDiagnosis: string()
-        .min(
-            medStatementFields.complicationsDiagnosis.min,
-            "Minimal length is " + medStatementFields.complicationsDiagnosis.min,
-        )
-        .max(
-            medStatementFields.complicationsDiagnosis.max,
-            "Maximal length is " + medStatementFields.complicationsDiagnosis.max,
-        )
-        .required("Required field"),
-    relatedDiagnosis: string()
-        .min(
-            medStatementFields.relatedDiagnosis.min,
-            "Minimal length is " + medStatementFields.relatedDiagnosis.min,
-        )
-        .max(
-            medStatementFields.relatedDiagnosis.max,
-            "Maximal length is " + medStatementFields.relatedDiagnosis.max,
-        )
-        .required("Required field"),
-    complaints: string()
-        .min(
-            medStatementFields.complaints.min,
-            "Minimal length is " + medStatementFields.complaints.min,
-        )
-        .max(
-            medStatementFields.complaints.max,
-            "Maximal length is " + medStatementFields.complaints.max,
-        )
-        .required("Required field"),
-    medicalHistory: string()
-        .min(
-            medStatementFields.medicalHistory.min,
-            "Minimal length is " + medStatementFields.medicalHistory.min,
-        )
-        .max(
-            medStatementFields.medicalHistory.max,
-            "Maximal length is " + medStatementFields.medicalHistory.max,
-        )
-        .required("Required field"),
-    KT: string()
-        .min(medStatementFields.KT.min, "Minimal length is " + medStatementFields.KT.min)
-        .max(medStatementFields.KT.max, "Maximal length is " + medStatementFields.KT.max)
-        .required("Required field"),
-    MRT: string()
-        .min(medStatementFields.MRT.min, "Minimal length is " + medStatementFields.MRT.min)
-        .max(medStatementFields.MRT.max, "Maximal length is " + medStatementFields.MRT.max)
-        .required("Required field"),
-    FBC: string()
-        .min(medStatementFields.FBC.min, "Minimal length is " + medStatementFields.FBC.min)
-        .max(medStatementFields.FBC.max, "Maximal length is " + medStatementFields.FBC.max)
-        .required("Required field"),
-    FEGDC: string()
-        .min(medStatementFields.FEGDC.min, "Minimal length is " + medStatementFields.FEGDC.min)
-        .max(medStatementFields.FEGDC.max, "Maximal length is " + medStatementFields.FEGDC.max)
-        .required("Required field"),
-    histology: string()
-        .min(
-            medStatementFields.histology.min,
-            "Minimal length is " + medStatementFields.histology.min,
-        )
-        .max(
-            medStatementFields.histology.max,
-            "Maximal length is " + medStatementFields.histology.max,
-        )
-        .required("Required field"),
-    MDKDecision: string()
-        .min(
-            medStatementFields.MDKDecision.min,
-            "Minimal length is " + medStatementFields.MDKDecision.min,
-        )
-        .max(
-            medStatementFields.MDKDecision.max,
-            "Maximal length is " + medStatementFields.MDKDecision.max,
-        )
-        .required("Required field"),
-    PT_PHTOperation: string()
-        .min(
-            medStatementFields.PT_PHTOperation.min,
-            "Minimal length is " + medStatementFields.PT_PHTOperation.min,
-        )
-        .max(
-            medStatementFields.PT_PHTOperation.max,
-            "Maximal length is " + medStatementFields.PT_PHTOperation.max,
-        )
-        .required("Required field"),
-    recommendations: string()
-        .min(
-            medStatementFields.recommendations.min,
-            "Minimal length is " + medStatementFields.recommendations.min,
-        )
-        .max(
-            medStatementFields.recommendations.max,
-            "Maximal length is " + medStatementFields.recommendations.max,
-        )
-        .required("Required field"),
-    date: string()
-        .min(medStatementFields.date.min, "Minimal length is " + medStatementFields.date.min)
-        .max(medStatementFields.date.max, "Maximal length is " + medStatementFields.date.max)
-        .required("Required field"),
-    doctor: string()
-        .min(medStatementFields.doctor.min, "Minimal length is " + medStatementFields.doctor.min)
-        .max(medStatementFields.doctor.max, "Maximal length is " + medStatementFields.doctor.max)
-        .required("Required field"),
-});
+export const medStatementSchema = schemaFactory(medStatementFields);

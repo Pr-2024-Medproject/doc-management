@@ -1,23 +1,22 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { FormInfo } from "../../../types/Forms";
+import useFormInfo from "../../../hooks/useFormInfo";
 
 interface NavigationItemProps {
-    formId: string;
-    formLabel: string;
+    formInfo: FormInfo;
 }
 
 const NavigationItem: FC<NavigationItemProps> = (props) => {
-    const { formId } = useParams();
-
-    const border = formId === props.formId ? "border-8" : "border-2";
+    const current = useFormInfo();
+    const border = current.id === props.formInfo.id ? "border-8" : "border-2";
 
     return (
         <Link
             className={`p-2 ${border} border-emerald-800`}
-            to={`/doc-management/form/${props.formId}`}
+            to={`/doc-management/form/${props.formInfo.id}`}
         >
-            {props.formLabel}
+            {props.formInfo.name}
         </Link>
     );
 };

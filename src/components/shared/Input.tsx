@@ -1,7 +1,8 @@
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, MouseEvent } from "react";
+import { InputType } from "../../types/Input";
 
 interface InputProps {
-    type: "text" | "number" | "email" | "password" | "date" | "button";
+    type: InputType | "button";
     label?: string;
     value: string | number;
     name?: string;
@@ -10,6 +11,7 @@ interface InputProps {
     disabled?: boolean;
     className?: string;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onClick?: (e: MouseEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<InputProps> = ({
@@ -22,6 +24,7 @@ const Input: FC<InputProps> = ({
     disabled,
     className,
     onChange,
+    onClick,
 }) => {
     const buttonStyle = type === "button" ? "cursor-pointer" : "";
 
@@ -39,14 +42,11 @@ const Input: FC<InputProps> = ({
                 name={name}
                 placeholder={placeholder}
                 onChange={onChange}
+                onClick={onClick}
                 disabled={disabled}
                 className={`min-w-64 px-3 py-2 text-base text-[#344054] bg-white border border-[#d0d5dd] shadow-sm rounded-lg placeholder-[#667085] ${buttonStyle} ${className}`}
             />
-            {error && (
-                <p className="mt-1 ml-3 text-sm font-normal text-red-500">
-                    {error}
-                </p>
-            )}
+            {error && <p className="mt-1 ml-3 text-sm font-normal text-red-500">{error}</p>}
         </div>
     );
 };

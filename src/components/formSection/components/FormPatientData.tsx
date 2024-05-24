@@ -1,22 +1,22 @@
 import { FC } from "react";
 import ControlButtons from "../../mainPage/controlButtons/ControlButtons";
 import FormInput from "../../shared/FormInput";
-import {
-    medStatementFields,
-    medStatementSchema,
-} from "../../../validation-schemas/MedStatementSchema";
-import { MedStatementModel } from "../../../types/models/MedStatement";
 import useCustomFormik from "../../../hooks/useCustomFormik";
 import { FormInfo } from "../../../types/Forms";
+import { PatientData } from "../../../types/models/Patient";
+import {
+    patientDataFields,
+    patientDataSchema,
+} from "../../../validation-schemas/PatientDataSchema";
 
-interface FormMedStatementProps {
+interface FormPatientDataProps {
     formInfo: FormInfo;
 }
 
-const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo }) => {
-    const { form, saveHandler, printHandler } = useCustomFormik<MedStatementModel>({
-        fields: medStatementFields,
-        schema: medStatementSchema,
+const FormPatientData: FC<FormPatientDataProps> = ({ formInfo }) => {
+    const { form, saveHandler, printHandler } = useCustomFormik<PatientData>({
+        fields: patientDataFields,
+        schema: patientDataSchema,
         saveCallback: (values, _helpers) => {
             console.log(`Form ${formInfo.id} [${formInfo.name}] saved successfully.`);
             console.log(`DATA => `, values);
@@ -30,10 +30,10 @@ const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo }) => {
     return (
         <>
             <div className="flex-grow overflow-hidden overflow-y-auto">
-                {Object.entries(medStatementFields).map(([fieldName, fieldMeta]) => {
+                {Object.entries(patientDataFields).map(([fieldName, fieldMeta]) => {
                     return (
-                        <FormInput<MedStatementModel>
-                            fieldName={fieldName as keyof MedStatementModel}
+                        <FormInput<PatientData>
+                            fieldName={fieldName as keyof PatientData}
                             fieldMeta={fieldMeta}
                             form={form}
                             key={fieldName}
@@ -44,10 +44,10 @@ const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo }) => {
             <ControlButtons 
                 disabled={form.isValid}
                 saveCallback={saveHandler} 
-                printCallback={printHandler}
+                printCallback={printHandler} 
             />
         </>
     );
 };
 
-export default FormMedStatement;
+export default FormPatientData;
