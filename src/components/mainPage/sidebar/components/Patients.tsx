@@ -10,8 +10,10 @@ const Patients: FC<PatientsProps> = ({ patients }) => {
         console.log(patient);
     };
 
+    if (patients.length === 0) return;
+
     return (
-        <div className="flex flex-col gap-4 p-4 border-2 border-gray-300 w-full bg-white rounded-md shadow-sm">
+        <div className="flex flex-col gap-4 pe-4 py-4 w-full bg-white rounded-md shadow-sm">
             {patients.map((patient, i) => (
                 <Input
                     type="button"

@@ -3,7 +3,7 @@ import PatientSearch from "./PatientSearch";
 import Patients from "./Patients";
 import useLocalStorage from "../../../../hooks/useLocalStorage";
 
-type SidebarProps = {};
+interface SidebarProps {}
 
 const SideBarData: FC<SidebarProps> = (_props) => {
     const [patientName, setPatientName] = useState("");

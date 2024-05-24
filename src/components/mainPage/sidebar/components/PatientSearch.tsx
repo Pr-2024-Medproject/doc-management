@@ -9,7 +9,7 @@ interface PatientSearchProps {
 
 const PatientSearch: FC<PatientSearchProps> = ({ patientName, changeInputValue }) => {
     return (
-        <div className="flex flex-col border-2 border-black w-full mb-4">
+        <div className="flex flex-col w-full mb-4">
             <h3 className="font-semibold mb-2 text-center">Search for patient</h3>
             <div className="flex items-center justify-center gap-4">
                 <Input
