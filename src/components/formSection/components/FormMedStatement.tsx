@@ -30,8 +30,6 @@ const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo }) => {
     return (
         <>
             <div className="flex-grow overflow-hidden overflow-y-auto">
-                <h1>{formInfo.name}</h1>
-
                 <FormInput<MedStatementModel>
                     type="text"
                     fields={medStatementFields}

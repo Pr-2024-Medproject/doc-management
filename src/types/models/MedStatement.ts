@@ -1,11 +1,6 @@
-import { FormNames } from "../Forms";
+import { PatientData } from "./Patient";
 
-export interface MedStatementModel {
-    id?: string;
-    name: string;
-    surname: string;
-    patronymic: string;
-    birthday: Date;
+export interface MedStatementModel extends PatientData {
     address: string;
     job: string;
     hospitalizationDate: Date;
@@ -25,20 +20,4 @@ export interface MedStatementModel {
     recommendations: string;
     date: Date;
     doctor: string;
-}
-
-type History = {
-    [key in FormNames]?: Omit<
-        MedStatementModel,
-        "id" | "name" | "surname" | "patronymic" | "birthday"
-    >[];
-};
-
-export interface MedStatementPatient {
-    id: string;
-    name: string;
-    surname: string;
-    patronymic: string;
-    birthday: Date;
-    history: History;
 }
