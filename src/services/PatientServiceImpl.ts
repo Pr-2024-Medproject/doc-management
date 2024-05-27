@@ -6,7 +6,7 @@ export function createOrUpdatePatient(
     formValues: Partial<PatientData>,
     patient?: Patient,
 ): Patient {
-    if (patient) {
+    if (patient && patient.id) {
         return {
             ...patient,
             ...formValues,
@@ -15,7 +15,7 @@ export function createOrUpdatePatient(
     }
 
     return {
-        id: new Crypto().randomUUID(),
+        id: crypto.randomUUID(),
         history: { [FormsKeys.FORM_MED_STATEMENT]: [] },
         ...(formValues as PatientData),
     };
