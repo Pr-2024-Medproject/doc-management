@@ -16,20 +16,20 @@ interface FormPatientDataProps {
 }
 
 const FormPatientData: FC<FormPatientDataProps> = ({ formInfo }) => {
-    const [_patients, setPatients] = useLocalStorage<Patient[]>("patients", []);
+    // const { storedValue, setValue } = useLocalStorage<Patient[]>([]);
 
     const { form, saveHandler, printHandler } = useCustomFormik<PatientData>({
         fields: patientDataFields,
         schema: patientDataSchema,
         saveCallback: (values, _helpers) => {
-            console.log(`Form ${formInfo.id} [${formInfo.name}] saved successfully.`);
-            console.log(`DATA => `, values);
-            const test: Patient = {
-                id: "0",
-                history: { [FormsKeys.FORM_MED_STATEMENT]: [] },
-                ...(values as PatientData),
-            };
-            setPatients([test]);
+            // console.log(`Form ${formInfo.id} [${formInfo.name}] saved successfully.`);
+            // console.log(`DATA => `, values);
+            // const test: Patient = {
+            //     id: "0",
+            //     history: { [FormsKeys.FORM_MED_STATEMENT]: [] },
+            //     ...(values as PatientData),
+            // };
+            // setValue([test]);
         },
         printCallback: (values, _helpers) => {
             console.log(`Form ${formInfo.id} [${formInfo.name}] printed successfully.`);
