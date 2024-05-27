@@ -12,7 +12,7 @@ interface FormSectionProps {}
 const FormSection: FC<FormSectionProps> = (_props) => {
     const formInfo = useFormInfo();
     const [searchParams] = useSearchParams();
-    const { storedValue, setStoredValue, readValue } = useLocalStorage<Patient>();
+    const { lastValue, setLastValue, readValue } = useLocalStorage<Patient>();
     const id = searchParams.get("patientId");
 
     useEffect(() => {
@@ -24,8 +24,8 @@ const FormSection: FC<FormSectionProps> = (_props) => {
             {formInfo.key === FormsKeys.FORM_PATIENT_DATA ? (
                 <FormPatientData
                     formInfo={formInfo}
-                    patient={storedValue}
-                    setPatient={setStoredValue}
+                    patient={lastValue}
+                    setPatient={setLastValue}
                 />
             ) : formInfo.key === FormsKeys.FORM_MED_STATEMENT ? (
                 <FormMedStatement formInfo={formInfo} />

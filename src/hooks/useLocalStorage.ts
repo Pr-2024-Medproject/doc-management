@@ -1,14 +1,14 @@
 import { useState, useCallback } from "react";
 
 function useLocalStorage<T>(initialValue: T = {} as T) {
-    const [storedValue, setStoredValue] = useState<T>(initialValue);
+    const [lastValue, setLastValue] = useState<T>(initialValue);
 
     const readValue = useCallback(
         (key: string) => {
             try {
                 const item = window.localStorage.getItem(key);
                 const result = item ? (JSON.parse(item) as T) : initialValue;
-                setStoredValue(result);
+                setLastValue(result);
                 return result;
             } catch (error) {
                 console.warn(`Error reading localStorage key "${key}":`, error);
@@ -21,14 +21,14 @@ function useLocalStorage<T>(initialValue: T = {} as T) {
     const setValue = useCallback(
         (key: string, value: T | ((val: T) => T)) => {
             try {
-                const valueToStore = value instanceof Function ? value(storedValue) : value;
-                setStoredValue(valueToStore);
+                const valueToStore = value instanceof Function ? value(lastValue) : value;
+                setLastValue(valueToStore);
                 window.localStorage.setItem(key, JSON.stringify(valueToStore));
             } catch (error) {
                 console.warn(`Error setting localStorage key "${key}":`, error);
             }
         },
-        [storedValue],
+        [lastValue],
     );
 
     const updateValue = useCallback(
@@ -37,7 +37,7 @@ function useLocalStorage<T>(initialValue: T = {} as T) {
                 const currentStoredValue = readValue(key);
                 const valueToUpdate = value instanceof Function ? value(currentStoredValue) : value;
                 const updatedValue = { ...currentStoredValue, ...valueToUpdate };
-                setStoredValue(updatedValue);
+                setLastValue(updatedValue);
                 window.localStorage.setItem(key, JSON.stringify(updatedValue));
             } catch (error) {
                 console.warn(`Error updating localStorage key "${key}":`, error);
@@ -50,7 +50,7 @@ function useLocalStorage<T>(initialValue: T = {} as T) {
         (key: string) => {
             try {
                 window.localStorage.removeItem(key);
-                setStoredValue(initialValue);
+                setLastValue(initialValue);
             } catch (error) {
                 console.warn(`Error removing localStorage key "${key}":`, error);
             }
@@ -79,8 +79,8 @@ function useLocalStorage<T>(initialValue: T = {} as T) {
     }, []);
 
     return {
-        storedValue,
-        setStoredValue: setValue,
+        lastValue,
+        setLastValue: setValue,
         updateValue,
         readValue,
         removeValue,
