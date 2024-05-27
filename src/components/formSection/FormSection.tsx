@@ -28,7 +28,11 @@ const FormSection: FC<FormSectionProps> = (_props) => {
                     setPatient={setLastValue}
                 />
             ) : formInfo.key === FormsKeys.FORM_MED_STATEMENT ? (
-                <FormMedStatement formInfo={formInfo} />
+                <FormMedStatement
+                    formInfo={formInfo}
+                    patient={lastValue}
+                    setPatient={setLastValue}
+                />
             ) : formInfo.key === FormsKeys.FORM_UNKNOWN ? (
                 <h1>{formInfo.name}</h1>
             ) : (

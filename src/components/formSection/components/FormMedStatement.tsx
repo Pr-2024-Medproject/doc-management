@@ -8,15 +8,21 @@ import {
 import { MedStatementModel } from "../../../types/models/MedStatement";
 import useCustomFormik from "../../../hooks/useCustomFormik";
 import { FormInfo } from "../../../types/Forms";
+import { Patient } from "../../../types/models/Patient";
+import { getPatientDocumentData } from "../../../services/PatientServiceImpl";
+import { FormsKeys } from "../../../constants/Forms";
 
 interface FormMedStatementProps {
     formInfo: FormInfo;
+    patient: Patient;
+    setPatient: (id: string, patient: Patient) => void;
 }
 
-const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo }) => {
+const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo, patient }) => {
     const { form, saveHandler, printHandler } = useCustomFormik<MedStatementModel>({
         fields: medStatementFields,
         schema: medStatementSchema,
+        initial: getPatientDocumentData(FormsKeys.FORM_MED_STATEMENT, patient),
         saveCallback: (values, _helpers) => {
             console.log(`Form ${formInfo.id} [${formInfo.name}] saved successfully.`);
             console.log(`DATA => `, values);
@@ -41,9 +47,9 @@ const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo }) => {
                     );
                 })}
             </div>
-            <ControlButtons 
+            <ControlButtons
                 disabled={form.isValid}
-                saveCallback={saveHandler} 
+                saveCallback={saveHandler}
                 printCallback={printHandler}
             />
         </>
