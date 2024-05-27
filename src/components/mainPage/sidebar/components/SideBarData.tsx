@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useMemo, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import PatientSearch from "./PatientSearch";
 import Patients from "./Patients";
 import useLocalStorage from "../../../../hooks/useLocalStorage";
@@ -9,12 +9,8 @@ interface SidebarProps {}
 const SideBarData: FC<SidebarProps> = (_props) => {
     const [patientName, setPatientName] = useState("");
 
-    const { storedValue, getValues } = useLocalStorage<Patient>();
-
-    const patientsSideBarData = useMemo(
-        () => getValues().map((patient, i) => ({ name: patient.name, i })),
-        [storedValue, getValues],
-    );
+    const { getValues } = useLocalStorage<Patient>();
+    const patientsSideBarData = getValues();
 
     const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
         setPatientName(e.target.value);

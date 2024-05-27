@@ -1,11 +1,15 @@
 import { useState, useCallback } from "react";
 
 function useLocalStorage<T>(initialValue: T = {} as T) {
+    const [storedValue, setStoredValue] = useState<T>(initialValue);
+
     const readValue = useCallback(
         (key: string) => {
             try {
                 const item = window.localStorage.getItem(key);
-                return item ? (JSON.parse(item) as T) : initialValue;
+                const result = item ? (JSON.parse(item) as T) : initialValue;
+                setStoredValue(result);
+                return result;
             } catch (error) {
                 console.warn(`Error reading localStorage key "${key}":`, error);
                 return initialValue;
@@ -13,8 +17,6 @@ function useLocalStorage<T>(initialValue: T = {} as T) {
         },
         [initialValue],
     );
-
-    const [storedValue, setStoredValue] = useState<T>(initialValue);
 
     const setValue = useCallback(
         (key: string, value: T | ((val: T) => T)) => {

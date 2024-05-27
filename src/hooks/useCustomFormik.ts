@@ -38,6 +38,7 @@ function useCustomFormik<FieldsType>({
         onSubmit: (values, helpers) => {
             saveMode ? saveCallback(values, helpers) : printCallback(values, helpers);
         },
+        enableReinitialize: true,
     });
 
     const saveHandler = () => {
