@@ -32,9 +32,9 @@ export function pushToPatientHistory(
 
 export function getPatientDocumentData(formKey: HistoryFormsKeys, patient: Patient): HistoryModels {
     const nullable = {} as HistoryModels;
-
     if (!patient.history) {
-        return nullable;
+        return { ...nullable, ...patient };
     }
-    return patient.history[formKey].at(-1) || nullable;
+    const history = patient.history[formKey].at(-1) || nullable;
+    return { ...patient, ...history };
 }
