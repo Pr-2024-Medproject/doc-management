@@ -10,7 +10,8 @@ const SideBarData: FC<SidebarProps> = (_props) => {
     const [patientName, setPatientName] = useState("");
 
     const { getValues } = useLocalStorage<Patient>();
-    const patientsSideBarData = getValues();
+    const patientsData = getValues();
+    console.log(patientsData);
 
     const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
         setPatientName(e.target.value);
@@ -19,7 +20,7 @@ const SideBarData: FC<SidebarProps> = (_props) => {
     return (
         <div className="flex-grow overflow-hidden overflow-y-auto">
             <PatientSearch patientName={patientName} changeInputValue={changeInputValue} />
-            <Patients patients={patientsSideBarData} />
+            <Patients patients={patientsData} />
         </div>
     );
 };

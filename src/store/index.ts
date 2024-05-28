@@ -1,14 +1,12 @@
-// import { create } from "zustand";
+import { create } from "zustand";
+import { Patient } from "../types/models/Patient";
 
-// interface StoreState {
-//   bears: number;
-//   increasePopulation: () => void;
-//   updateBears: (newBears: number) => void;
-// }
+interface StoreState {
+    selectedPatient: Patient | null;
+    setSelectedPatient: (patient: Patient) => void;
+}
 
-// const useStore = create<StoreState>()((set) => ({
-//   bears: 0,
-//   increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-//   removeAllBears: () => set({ bears: 0 }),
-//   updateBears: (newBears) => set({ bears: newBears }),
-// }));
+export const useStore = create<StoreState>()((set) => ({
+    selectedPatient: null,
+    setSelectedPatient: (patient: Patient) => set((_state) => ({ selectedPatient: patient })),
+}));
