@@ -44,3 +44,7 @@ export function getPatientDocumentData(formKey: HistoryFormsKeys, patient: Patie
     const history = patient.history[formKey].at(-1) || nullable;
     return { ...patient, ...history };
 }
+
+export function updatePatientArray(patients: Patient[], patient: Patient) {
+    return [...patients.filter((item) => item.id !== patient.id), patient];
+}

@@ -4,15 +4,13 @@ import useFormInfo from "../../hooks/useFormInfo";
 import { FormsKeys } from "../../constants/Forms";
 import FormPatientData from "./components/FormPatientData";
 import { Patient } from "../../types/models/Patient";
-import useLocalStorage from "../../hooks/useLocalStorage";
 import { useStore } from "../../store";
 
 interface FormSectionProps {}
 
 const FormSection: FC<FormSectionProps> = (_props) => {
     const formInfo = useFormInfo();
-    const { setLastValue } = useLocalStorage<Patient>();
-    const { selectedPatient } = useStore();
+    const { selectedPatient, savePatient } = useStore();
 
     return (
         <section className="flex flex-col h-full">
@@ -20,13 +18,13 @@ const FormSection: FC<FormSectionProps> = (_props) => {
                 <FormPatientData
                     formInfo={formInfo}
                     patient={selectedPatient || ({} as Patient)}
-                    setPatient={setLastValue}
+                    setPatient={savePatient}
                 />
             ) : formInfo.key === FormsKeys.FORM_MED_STATEMENT ? (
                 <FormMedStatement
                     formInfo={formInfo}
                     patient={selectedPatient || ({} as Patient)}
-                    setPatient={setLastValue}
+                    setPatient={savePatient}
                 />
             ) : formInfo.key === FormsKeys.FORM_UNKNOWN ? (
                 <h1>{formInfo.name}</h1>
