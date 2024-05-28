@@ -3,23 +3,27 @@ import ControlButtons from "../../mainPage/controlButtons/ControlButtons";
 import FormInput from "../../shared/FormInput";
 import useCustomFormik from "../../../hooks/useCustomFormik";
 import { FormInfo } from "../../../types/Forms";
-import { PatientData } from "../../../types/models/Patient";
+import { Patient, PatientData } from "../../../types/models/Patient";
 import {
     patientDataFields,
     patientDataSchema,
 } from "../../../validation-schemas/PatientDataSchema";
+import { createOrUpdatePatient } from "../../../services/PatientServiceImpl";
 
 interface FormPatientDataProps {
     formInfo: FormInfo;
+    patient: Patient;
+    setPatient: (id: string, patient: Patient) => void;
 }
 
-const FormPatientData: FC<FormPatientDataProps> = ({ formInfo }) => {
+const FormPatientData: FC<FormPatientDataProps> = ({ formInfo, patient, setPatient }) => {
     const { form, saveHandler, printHandler } = useCustomFormik<PatientData>({
         fields: patientDataFields,
         schema: patientDataSchema,
+        initial: patient,
         saveCallback: (values, _helpers) => {
-            console.log(`Form ${formInfo.id} [${formInfo.name}] saved successfully.`);
-            console.log(`DATA => `, values);
+            const model = createOrUpdatePatient(values, patient);
+            setPatient(model.id, model);
         },
         printCallback: (values, _helpers) => {
             console.log(`Form ${formInfo.id} [${formInfo.name}] printed successfully.`);
@@ -41,10 +45,10 @@ const FormPatientData: FC<FormPatientDataProps> = ({ formInfo }) => {
                     );
                 })}
             </div>
-            <ControlButtons 
-                disabled={form.isValid}
-                saveCallback={saveHandler} 
-                printCallback={printHandler} 
+            <ControlButtons
+                disabled={!form.isValid}
+                saveCallback={saveHandler}
+                printCallback={printHandler}
             />
         </>
     );

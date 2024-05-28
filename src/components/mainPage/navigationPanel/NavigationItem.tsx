@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { FormInfo } from "../../../types/Forms";
 import useFormInfo from "../../../hooks/useFormInfo";
+import Input from "../../shared/Input";
 
 interface NavigationItemProps {
     formInfo: FormInfo;
@@ -9,14 +10,11 @@ interface NavigationItemProps {
 
 const NavigationItem: FC<NavigationItemProps> = (props) => {
     const current = useFormInfo();
-    const border = current.id === props.formInfo.id ? "border-8" : "border-2";
+    const highlightCurrent = current.id === props.formInfo.id ? "border-4 border-stone-400" : "";
 
     return (
-        <Link
-            className={`p-2 ${border} border-emerald-800`}
-            to={`/doc-management/form/${props.formInfo.id}`}
-        >
-            {props.formInfo.name}
+        <Link to={`/doc-management/form/${props.formInfo.id}`}>
+            <Input type="button" value={props.formInfo.name} className={highlightCurrent} />
         </Link>
     );
 };
