@@ -9,7 +9,7 @@ import { MedStatementModel } from "../../../types/models/MedStatement";
 import useCustomFormik from "../../../hooks/useCustomFormik";
 import { FormInfo } from "../../../types/Forms";
 import { Patient } from "../../../types/models/Patient";
-import { getPatientDocumentData } from "../../../services/PatientServiceImpl";
+import { getPatientDocumentData, pushToPatientHistory } from "../../../services/PatientServiceImpl";
 import { FormsKeys } from "../../../constants/Forms";
 
 interface FormMedStatementProps {
@@ -18,14 +18,18 @@ interface FormMedStatementProps {
     setPatient: (id: string, patient: Patient) => void;
 }
 
-const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo, patient }) => {
+const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo, patient, setPatient }) => {
     const { form, saveHandler, printHandler } = useCustomFormik<MedStatementModel>({
         fields: medStatementFields,
         schema: medStatementSchema,
         initial: getPatientDocumentData(FormsKeys.FORM_MED_STATEMENT, patient),
         saveCallback: (values, _helpers) => {
-            console.log(`Form ${formInfo.id} [${formInfo.name}] saved successfully.`);
-            console.log(`DATA => `, values);
+            const model = pushToPatientHistory(
+                FormsKeys.FORM_MED_STATEMENT,
+                values as MedStatementModel,
+                patient,
+            );
+            setPatient(model.id, model);
         },
         printCallback: (values, _helpers) => {
             console.log(`Form ${formInfo.id} [${formInfo.name}] printed successfully.`);
@@ -48,7 +52,7 @@ const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo, patient }) => {
                 })}
             </div>
             <ControlButtons
-                disabled={form.isValid}
+                disabled={!form.isValid}
                 saveCallback={saveHandler}
                 printCallback={printHandler}
             />
