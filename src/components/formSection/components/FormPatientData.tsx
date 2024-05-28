@@ -8,28 +8,22 @@ import {
     patientDataFields,
     patientDataSchema,
 } from "../../../validation-schemas/PatientDataSchema";
-import useLocalStorage from "../../../hooks/useLocalStorage";
-import { FormsKeys } from "../../../constants/Forms";
+import { createOrUpdatePatient } from "../../../services/PatientServiceImpl";
 
 interface FormPatientDataProps {
     formInfo: FormInfo;
+    patient: Patient;
+    setPatient: (id: string, patient: Patient) => void;
 }
 
-const FormPatientData: FC<FormPatientDataProps> = ({ formInfo }) => {
-    const [_patients, setPatients] = useLocalStorage<Patient[]>("patients", []);
-
+const FormPatientData: FC<FormPatientDataProps> = ({ formInfo, patient, setPatient }) => {
     const { form, saveHandler, printHandler } = useCustomFormik<PatientData>({
         fields: patientDataFields,
         schema: patientDataSchema,
+        initial: patient,
         saveCallback: (values, _helpers) => {
-            console.log(`Form ${formInfo.id} [${formInfo.name}] saved successfully.`);
-            console.log(`DATA => `, values);
-            const test: Patient = {
-                id: "0",
-                history: { [FormsKeys.FORM_MED_STATEMENT]: [] },
-                ...(values as PatientData),
-            };
-            setPatients([test]);
+            const model = createOrUpdatePatient(values, patient);
+            setPatient(model.id, model);
         },
         printCallback: (values, _helpers) => {
             console.log(`Form ${formInfo.id} [${formInfo.name}] printed successfully.`);
