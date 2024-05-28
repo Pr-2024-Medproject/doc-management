@@ -11,7 +11,6 @@ const SideBarData: FC<SidebarProps> = (_props) => {
 
     const { getValues } = useLocalStorage<Patient>();
     const patientsData = getValues();
-    console.log(patientsData);
 
     const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
         setPatientName(e.target.value);

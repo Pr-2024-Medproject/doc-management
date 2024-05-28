@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import FormMedStatement from "./components/FormMedStatement";
 import useFormInfo from "../../hooks/useFormInfo";
 import { FormsKeys } from "../../constants/Forms";
