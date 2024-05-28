@@ -22,8 +22,8 @@ const FormPatientData: FC<FormPatientDataProps> = ({ formInfo, patient, setPatie
         schema: patientDataSchema,
         initial: patient,
         saveCallback: (values, _helpers) => {
-            const test = createOrUpdatePatient(values, patient);
-            setPatient(test.id, test);
+            const model = createOrUpdatePatient(values, patient);
+            setPatient(model.id, model);
         },
         printCallback: (values, _helpers) => {
             console.log(`Form ${formInfo.id} [${formInfo.name}] printed successfully.`);

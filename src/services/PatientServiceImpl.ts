@@ -26,7 +26,13 @@ export function pushToPatientHistory(
     formValues: HistoryModels,
     patient: Patient,
 ): Patient {
-    patient.history[formKey].push(formValues);
+    if (!patient.history) {
+        patient.history = {
+            [formKey]: [formValues],
+        };
+    } else {
+        patient.history[formKey].push(formValues);
+    }
     return patient;
 }
 
