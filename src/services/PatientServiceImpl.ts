@@ -36,12 +36,16 @@ export function pushToPatientHistory(
     return patient;
 }
 
-export function getPatientDocumentData(formKey: HistoryFormsKeys, patient: Patient): HistoryModels {
+export function getPatientDocumentData(
+    formKey: HistoryFormsKeys,
+    patient: Patient,
+    date: string | null,
+): HistoryModels {
     const nullable = {} as HistoryModels;
-    if (!patient.history) {
+    if (!patient.history || !date) {
         return { ...nullable, ...patient };
     }
-    const history = patient.history[formKey].at(-1) || nullable;
+    const history = patient.history[formKey].find((item) => String(item.date) === date) || nullable;
     return { ...history, ...patient };
 }
 
@@ -56,4 +60,12 @@ export function filterPatients(searchPattern: string, patients: Patient[]) {
             item.surname.toLowerCase().includes(searchString) ||
             item.name.toLowerCase().includes(searchString),
     );
+}
+
+export function getPatientHistoryDates(formKey: HistoryFormsKeys, patient: Patient) {
+    if (!patient?.history) {
+        return [];
+    }
+
+    return patient.history[formKey].map((item) => String(item.date));
 }
