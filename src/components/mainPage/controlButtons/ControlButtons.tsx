@@ -14,7 +14,7 @@ interface ControlButtonsProps {
     patient: Patient;
     saveCallback: () => void;
     printCallback: () => void;
-    historyDateHandler?: (value: string) => void;
+    historyDateHandler: (value: string) => void;
 }
 
 const ControlButtons: FC<ControlButtonsProps> = (props) => {
@@ -52,7 +52,6 @@ const ControlButtons: FC<ControlButtonsProps> = (props) => {
                             <DropDown
                                 values={historyDates}
                                 onSelect={(e) =>
-                                    props.historyDateHandler &&
                                     props.historyDateHandler(e?.currentTarget.value || "")
                                 }
                             />

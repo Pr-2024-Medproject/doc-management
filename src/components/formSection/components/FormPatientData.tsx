@@ -50,6 +50,7 @@ const FormPatientData: FC<FormPatientDataProps> = ({ formInfo, patient, setPatie
                 patient={patient}
                 saveCallback={saveHandler}
                 printCallback={printHandler}
+                historyDateHandler={() => {}}
             />
         </>
     );
