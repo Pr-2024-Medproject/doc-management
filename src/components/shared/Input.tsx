@@ -4,7 +4,7 @@ import { InputType } from "../../types/Input";
 interface InputProps {
     type: InputType | "button";
     label?: string;
-    value: string | number;
+    value?: string | number;
     name?: string;
     placeholder?: string;
     error?: string;

@@ -48,3 +48,12 @@ export function getPatientDocumentData(formKey: HistoryFormsKeys, patient: Patie
 export function updatePatientArray(patients: Patient[], patient: Patient) {
     return [...patients.filter((item) => item.id !== patient.id), patient];
 }
+
+export function filterPatients(searchPattern: string, patients: Patient[]) {
+    const searchString = searchPattern.toLocaleLowerCase();
+    return patients.filter(
+        (item) =>
+            item.surname.toLowerCase().includes(searchString) ||
+            item.name.toLowerCase().includes(searchString),
+    );
+}

@@ -3,11 +3,10 @@ import SearchIcon from "../../../../assets/search.svg";
 import Input from "../../../shared/Input";
 
 interface PatientSearchProps {
-    patientName: string;
     changeInputValue: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const PatientSearch: FC<PatientSearchProps> = ({ patientName, changeInputValue }) => {
+const PatientSearch: FC<PatientSearchProps> = ({ changeInputValue }) => {
     return (
         <div className="flex flex-col w-full mb-4">
             <h3 className="font-semibold mb-2 text-center">Search for patient</h3>
@@ -16,7 +15,6 @@ const PatientSearch: FC<PatientSearchProps> = ({ patientName, changeInputValue }
                     type="text"
                     name="search"
                     placeholder="Search by name"
-                    value={patientName}
                     onChange={changeInputValue}
                     className="w-80"
                 />
