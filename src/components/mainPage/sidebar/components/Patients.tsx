@@ -26,7 +26,7 @@ const Patients: FC<PatientsProps> = ({ patients }) => {
             {patients.map((patient, i) => (
                 <Input
                     type="button"
-                    value={patient.name}
+                    value={patient.surname + " " + patient.name}
                     key={patient.name + i}
                     onClick={() => handleClick(patient)}
                     className={`text-lg font-medium rounded-md text-left ${
