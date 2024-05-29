@@ -42,7 +42,7 @@ export function getPatientDocumentData(formKey: HistoryFormsKeys, patient: Patie
         return { ...nullable, ...patient };
     }
     const history = patient.history[formKey].at(-1) || nullable;
-    return { ...patient, ...history };
+    return { ...history, ...patient };
 }
 
 export function updatePatientArray(patients: Patient[], patient: Patient) {
