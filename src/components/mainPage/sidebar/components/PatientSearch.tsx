@@ -14,7 +14,7 @@ const PatientSearch: FC<PatientSearchProps> = ({ changeInputValue }) => {
                 <Input
                     type="text"
                     name="search"
-                    placeholder="Search by name"
+                    placeholder="Пошук по прізвищу або імені"
                     onChange={changeInputValue}
                     className="w-80"
                 />

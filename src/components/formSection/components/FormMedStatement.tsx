@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import ControlButtons from "../../mainPage/controlButtons/ControlButtons";
 import FormInput from "../../shared/FormInput";
 import {
@@ -19,10 +19,18 @@ interface FormMedStatementProps {
 }
 
 const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo, patient, setPatient }) => {
+    const [initial, setInitial] = useState(
+        getPatientDocumentData(FormsKeys.FORM_MED_STATEMENT, patient, null),
+    );
+
+    const initialHandler = (historyDate: string) => {
+        setInitial(getPatientDocumentData(FormsKeys.FORM_MED_STATEMENT, patient, historyDate));
+    };
+
     const { form, saveHandler, printHandler } = useCustomFormik<MedStatementModel>({
         fields: medStatementFields,
         schema: medStatementSchema,
-        initial: getPatientDocumentData(FormsKeys.FORM_MED_STATEMENT, patient),
+        initial: initial,
         saveCallback: (values, _helpers) => {
             const model = pushToPatientHistory(
                 FormsKeys.FORM_MED_STATEMENT,
@@ -53,8 +61,10 @@ const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo, patient, setPat
             </div>
             <ControlButtons
                 disabled={!form.isValid}
+                patient={patient}
                 saveCallback={saveHandler}
                 printCallback={printHandler}
+                historyDateHandler={initialHandler}
             />
         </>
     );
