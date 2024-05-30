@@ -47,7 +47,7 @@ const Input: FC<InputProps> = ({
                 onChange={onChange}
                 onClick={onClick}
                 disabled={disabled}
-                className={`min-w-64 px-3 py-2 text-base text-[#344054] bg-white border border-[#d0d5dd] shadow-sm rounded-lg placeholder-[#667085] ${buttonStyle} ${className}`}
+                className={`px-3 py-2 text-base text-[#344054] bg-white border border-[#d0d5dd] shadow-sm rounded-lg placeholder-[#667085] ${buttonStyle} ${className}`}
             />
             {error && <p className="mt-1 ml-3 text-sm font-normal text-red-500">{error}</p>}
         </div>
