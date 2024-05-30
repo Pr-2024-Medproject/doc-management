@@ -1,3 +1,4 @@
+import { PATIENT_DATA } from "../constants/FormOptions";
 import { Fields } from "../types/SchemaFactory";
 import { PatientData } from "../types/models/Patient";
 import { schemaFactory } from "./SchemaFactory";
@@ -164,14 +165,16 @@ export const patientDataFields: Fields<PatientData> = {
         max: 100,
         placeholder: "Загальний стан",
         initial: "",
-        type: "text",
+        type: "select",
+        options: PATIENT_DATA.generalCondition,
     },
     constitution: {
         min: 2,
         max: 100,
         placeholder: "Конституція",
         initial: "",
-        type: "text",
+        type: "select",
+        options: PATIENT_DATA.constitution,
     },
     nutrition: {
         min: 2,

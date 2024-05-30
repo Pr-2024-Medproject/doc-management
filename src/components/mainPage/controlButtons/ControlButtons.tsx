@@ -35,10 +35,7 @@ const ControlButtons: FC<ControlButtonsProps> = ({
 
     const currentForm = useFormInfo();
     const historyDates = useMemo(
-        () => [
-            "Оберіть дату",
-            ...getPatientHistoryDates(currentForm.key as HistoryFormsKeys, patient),
-        ],
+        () => getPatientHistoryDates(currentForm.key as HistoryFormsKeys, patient),
         [currentForm.key, patient],
     );
 
@@ -55,8 +52,9 @@ const ControlButtons: FC<ControlButtonsProps> = ({
                         />
                         {isPrintableForm(currentForm) && (
                             <DropDown
+                                defaultValue="Оберіть дату"
                                 values={historyDates}
-                                onSelect={(e) => historyDateHandler(e?.currentTarget.value || "")}
+                                onChange={(e) => historyDateHandler(e?.currentTarget.value || "")}
                             />
                         )}
                     </>
