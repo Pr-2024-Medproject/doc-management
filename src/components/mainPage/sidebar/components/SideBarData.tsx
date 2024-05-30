@@ -11,7 +11,6 @@ const SideBarData: FC<SidebarProps> = (_props) => {
     const [searchPattern, setSearchPattern] = useState<string>("");
 
     const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
-        // setPatientName(e.target.value);
         setSearchPattern(e.target.value);
     };
 

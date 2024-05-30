@@ -1,4 +1,4 @@
-import { PATIENT_DATA } from "../constants/FormOptions";
+import { PATIENT_DATA_OPTIONS } from "../constants/FormOptions";
 import { Fields } from "../types/SchemaFactory";
 import { PatientData } from "../types/models/Patient";
 import { schemaFactory } from "./SchemaFactory";
@@ -166,7 +166,7 @@ export const patientDataFields: Fields<PatientData> = {
         placeholder: "Загальний стан",
         initial: "",
         type: "select",
-        options: PATIENT_DATA.generalCondition,
+        options: PATIENT_DATA_OPTIONS.generalCondition,
     },
     constitution: {
         min: 2,
@@ -174,21 +174,23 @@ export const patientDataFields: Fields<PatientData> = {
         placeholder: "Конституція",
         initial: "",
         type: "select",
-        options: PATIENT_DATA.constitution,
+        options: PATIENT_DATA_OPTIONS.constitution,
     },
     nutrition: {
         min: 2,
         max: 100,
         placeholder: "Харчування",
         initial: "",
-        type: "text",
+        type: "select",
+        options: PATIENT_DATA_OPTIONS.nutrition,
     },
     dyspnea: {
         min: 2,
         max: 100,
         placeholder: "Задишка",
         initial: "",
-        type: "text",
+        type: "select",
+        options: PATIENT_DATA_OPTIONS.dyspnea,
     },
     skin: {
         min: 2,
@@ -230,7 +232,8 @@ export const patientDataFields: Fields<PatientData> = {
         max: 100,
         placeholder: "Язик",
         initial: "",
-        type: "text",
+        type: "select",
+        options: PATIENT_DATA_OPTIONS.tongue,
     },
     stomach: {
         min: 2,
@@ -258,14 +261,16 @@ export const patientDataFields: Fields<PatientData> = {
         max: 100,
         placeholder: "Стілець",
         initial: "",
-        type: "text",
+        type: "select",
+        options: PATIENT_DATA_OPTIONS.chair,
     },
     diuresis: {
         min: 2,
         max: 100,
         placeholder: "Діурез",
         initial: "",
-        type: "text",
+        type: "select",
+        options: PATIENT_DATA_OPTIONS.diuresis,
     },
 
     supraclavicularL_v: {
@@ -287,7 +292,8 @@ export const patientDataFields: Fields<PatientData> = {
         max: 100,
         placeholder: "Над легенями дихання",
         initial: "",
-        type: "text",
+        type: "select",
+        options: PATIENT_DATA_OPTIONS.suprapulmonaryBreathing,
     },
     breathShortness: {
         min: 2,
@@ -301,7 +307,8 @@ export const patientDataFields: Fields<PatientData> = {
         max: 100,
         placeholder: "Перкуторно",
         initial: "",
-        type: "text",
+        type: "select",
+        options: PATIENT_DATA_OPTIONS.percussionally,
     },
     dullness: {
         min: 2,

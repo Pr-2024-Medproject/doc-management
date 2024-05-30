@@ -46,7 +46,7 @@ const ControlButtons: FC<ControlButtonsProps> = ({
                     <>
                         <Input
                             type="button"
-                            value="Or create new patient"
+                            value="Чи створити нового паціента"
                             disabled={false}
                             onClick={createNewPatientHandler}
                         />
@@ -62,8 +62,13 @@ const ControlButtons: FC<ControlButtonsProps> = ({
             </div>
 
             <div className="flex gap-6">
-                <Input type="button" value="Save" disabled={disabled} onClick={saveCallback} />
-                <Input type="button" value="Print" disabled={disabled} onClick={printCallback} />
+                <Input type="button" value="Зберегти" disabled={disabled} onClick={saveCallback} />
+                <Input
+                    type="button"
+                    value="Згенерувати"
+                    disabled={disabled}
+                    onClick={printCallback}
+                />
             </div>
         </div>
     );

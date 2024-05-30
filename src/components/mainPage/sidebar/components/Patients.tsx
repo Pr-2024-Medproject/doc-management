@@ -19,7 +19,13 @@ const Patients: FC<PatientsProps> = ({ patients }) => {
         navigate(`/doc-management/form/${formInfo?.id}`);
     };
 
-    if (patients.length === 0) return;
+    if (patients.length === 0) {
+        return (
+            <div className="flex justify-center items-center">
+                <p className="text-gray-500 text-lg">No patients available</p>
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col gap-4 pe-4 py-4 w-full bg-white rounded-md">
