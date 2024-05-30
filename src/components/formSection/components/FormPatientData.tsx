@@ -47,10 +47,8 @@ const FormPatientData: FC<FormPatientDataProps> = ({ formInfo, patient, setPatie
             </div>
             <ControlButtons
                 disabled={!form.isValid}
-                patient={patient}
                 saveCallback={saveHandler}
                 printCallback={printHandler}
-                historyDateHandler={() => {}}
             />
         </>
     );

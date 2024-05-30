@@ -11,30 +11,35 @@ import { HistoryFormsKeys } from "../../../types/models/History";
 
 interface ControlButtonsProps {
     disabled: boolean;
-    patient: Patient;
+    patient?: Patient;
     saveCallback: () => void;
     printCallback: () => void;
-    historyDateHandler: (value: string) => void;
+    historyDateHandler?: (value: string) => void;
 }
 
-const ControlButtons: FC<ControlButtonsProps> = (props) => {
+const ControlButtons: FC<ControlButtonsProps> = ({
+    disabled,
+    patient = {} as Patient,
+    saveCallback,
+    printCallback,
+    historyDateHandler = () => {},
+}) => {
     const navigate = useNavigate();
     const dataForm = getPatientDataFormInfo();
     const { selectedPatient, setSelectedPatient } = useStore();
-
-    const currentForm = useFormInfo();
 
     const createNewPatientHandler = () => {
         setSelectedPatient(null);
         navigate(`/doc-management/form/${dataForm?.id}`);
     };
 
+    const currentForm = useFormInfo();
     const historyDates = useMemo(
         () => [
             "Оберіть дату",
-            ...getPatientHistoryDates(currentForm.key as HistoryFormsKeys, props.patient),
+            ...getPatientHistoryDates(currentForm.key as HistoryFormsKeys, patient),
         ],
-        [currentForm.key, props.patient],
+        [currentForm.key, patient],
     );
 
     return (
@@ -51,9 +56,7 @@ const ControlButtons: FC<ControlButtonsProps> = (props) => {
                         {isPrintableForm(currentForm) && (
                             <DropDown
                                 values={historyDates}
-                                onSelect={(e) =>
-                                    props.historyDateHandler(e?.currentTarget.value || "")
-                                }
+                                onSelect={(e) => historyDateHandler(e?.currentTarget.value || "")}
                             />
                         )}
                     </>
@@ -61,18 +64,8 @@ const ControlButtons: FC<ControlButtonsProps> = (props) => {
             </div>
 
             <div className="flex gap-6">
-                <Input
-                    type="button"
-                    value="Save"
-                    disabled={props.disabled}
-                    onClick={props.saveCallback}
-                />
-                <Input
-                    type="button"
-                    value="Print"
-                    disabled={props.disabled}
-                    onClick={props.printCallback}
-                />
+                <Input type="button" value="Save" disabled={disabled} onClick={saveCallback} />
+                <Input type="button" value="Print" disabled={disabled} onClick={printCallback} />
             </div>
         </div>
     );

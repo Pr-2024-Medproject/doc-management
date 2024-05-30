@@ -2,6 +2,10 @@ import { FormsKeys } from "../constants/Forms";
 import { HistoryFormsKeys, HistoryModels } from "../types/models/History";
 import { PatientData, Patient } from "../types/models/Patient";
 
+function isThereHistory(patient: Patient) {
+    return Object.hasOwn(patient, "history") && Object.keys(patient.history).length !== 0;
+}
+
 export function createOrUpdatePatient(
     formValues: Partial<PatientData>,
     patient?: Patient,
@@ -26,7 +30,7 @@ export function pushToPatientHistory(
     formValues: HistoryModels,
     patient: Patient,
 ): Patient {
-    if (!patient.history) {
+    if (!isThereHistory(patient)) {
         patient.history = {
             [formKey]: [formValues],
         };
@@ -42,7 +46,7 @@ export function getPatientDocumentData(
     date: string | null,
 ): HistoryModels {
     const nullable = {} as HistoryModels;
-    if (!patient.history || !date) {
+    if (!isThereHistory(patient) || !date) {
         return { ...nullable, ...patient };
     }
     const history = patient.history[formKey].find((item) => String(item.date) === date) || nullable;
@@ -63,7 +67,7 @@ export function filterPatients(searchPattern: string, patients: Patient[]) {
 }
 
 export function getPatientHistoryDates(formKey: HistoryFormsKeys, patient: Patient) {
-    if (!patient?.history) {
+    if (!isThereHistory(patient)) {
         return [];
     }
 
