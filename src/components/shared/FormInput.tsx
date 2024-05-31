@@ -3,6 +3,7 @@ import Input from "./Input";
 import { FieldMetaData } from "../../types/SchemaFactory";
 import DropDown from "./DropDown";
 import { InputType } from "../../types/Input";
+import EditableDropDown from "./EditableDropDown";
 
 interface FormInputProps<T> {
     disabled?: boolean;
@@ -26,8 +27,21 @@ function FormInput<FieldsType>({
                 value={form.values[fieldName] as string}
                 label={fieldMeta.placeholder}
                 values={fieldMeta.options}
-                defaultValue={"Оберіть стан"}
+                defaultValue={"Оберіть варіант"}
                 error={form.errors[fieldName] as string}
+                onChange={form.handleChange}
+            />
+        );
+    } else if (fieldMeta.type === "editableSelect" && fieldMeta.options) {
+        return (
+            <EditableDropDown
+                name={fieldName as string}
+                value={form.values[fieldName] as string}
+                placeholder={fieldMeta.placeholder}
+                defaultOption={"Оберіть варіанти"}
+                options={fieldMeta.options}
+                error={form.errors[fieldName] as string}
+                setValue={(value: string) => form.setFieldValue(fieldName as string, value)}
                 onChange={form.handleChange}
             />
         );

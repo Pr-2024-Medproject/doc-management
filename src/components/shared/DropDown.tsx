@@ -48,7 +48,7 @@ const DropDown: FC<DropDownProps> = ({
                 ))}
             </select>
             <p className={`mt-1 ml-3 text-sm font-normal text-red-500`}>
-                {error || name ? "\u00A0" : ""}
+                {error || (name ? "\u00A0" : "")}
             </p>
         </div>
     );

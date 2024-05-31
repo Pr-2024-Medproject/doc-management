@@ -1,6 +1,6 @@
 import { InputType } from "./Input";
 
-export type MetaDataType = InputType | "select";
+export type MetaDataType = InputType | "select" | "editableSelect";
 
 export type FieldMetaData = {
     min: number;
