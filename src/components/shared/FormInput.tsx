@@ -38,7 +38,7 @@ function FormInput<FieldsType>({
                 name={fieldName as string}
                 value={form.values[fieldName] as string}
                 placeholder={fieldMeta.placeholder}
-                defaultOption={"Оберіть варіант"}
+                defaultOption={"Оберіть варіанти"}
                 options={fieldMeta.options}
                 error={form.errors[fieldName] as string}
                 setValue={(value: string) => form.setFieldValue(fieldName as string, value)}
