@@ -3,6 +3,8 @@ import NavigationItem from "./NavigationItem";
 import { FORMS } from "../../../constants/Forms";
 import Input from "../../shared/Input";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useStore } from "../../../store";
+import { isPrintableForm } from "../../../services/FormServiceImpl";
 
 interface NavigationPanelProps {}
 
@@ -10,6 +12,7 @@ const NavigationPanel: FC<NavigationPanelProps> = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const isMainPage = location.pathname === "/doc-management/";
+    const { selectedPatient } = useStore();
 
     return (
         <nav className="h-full p-4 flex justify-evenly">
@@ -21,7 +24,11 @@ const NavigationPanel: FC<NavigationPanelProps> = () => {
                 />
             )}
             {FORMS.map((info) => (
-                <NavigationItem key={info.key} formInfo={info} />
+                <NavigationItem
+                    key={info.key}
+                    formInfo={info}
+                    disabled={isPrintableForm(info) && !selectedPatient}
+                />
             ))}
         </nav>
     );

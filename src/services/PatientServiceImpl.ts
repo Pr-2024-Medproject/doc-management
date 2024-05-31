@@ -51,8 +51,7 @@ export function getPatientDocumentData(
     }
     const history = patient.history[formKey].find((item) => String(item.date) === date) || nullable;
 
-    //TODO: change order of variables below
-    return { ...history, ...patient };
+    return { ...patient, ...history };
 }
 
 export function updatePatientArray(patients: Patient[], patient: Patient) {

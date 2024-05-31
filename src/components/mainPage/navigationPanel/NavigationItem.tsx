@@ -6,15 +6,21 @@ import Input from "../../shared/Input";
 
 interface NavigationItemProps {
     formInfo: FormInfo;
+    disabled: boolean;
 }
 
-const NavigationItem: FC<NavigationItemProps> = (props) => {
+const NavigationItem: FC<NavigationItemProps> = ({ formInfo, disabled }) => {
     const current = useFormInfo();
-    const highlightCurrent = current.id === props.formInfo.id ? "border-4 border-stone-400" : "";
+    const highlightCurrent = current.id === formInfo.id ? "border-4 border-stone-400" : "";
 
     return (
-        <Link to={`/doc-management/form/${props.formInfo.id}`}>
-            <Input type="button" value={props.formInfo.name} className={highlightCurrent} />
+        <Link to={`/doc-management/form/${formInfo.id}`}>
+            <Input
+                type="button"
+                value={formInfo.name}
+                className={highlightCurrent}
+                disabled={disabled}
+            />
         </Link>
     );
 };
