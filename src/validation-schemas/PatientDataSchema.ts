@@ -278,7 +278,8 @@ export const patientDataFields: Fields<PatientData> = {
         max: 100,
         placeholder: "Надключичні л/в",
         initial: "",
-        type: "text",
+        type: "editableSelect",
+        options: PATIENT_DATA_OPTIONS.supraclavicularL_v,
     },
     axillaryL_v: {
         min: 2,

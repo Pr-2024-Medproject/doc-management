@@ -8,4 +8,12 @@ export const PATIENT_DATA_OPTIONS = {
     diuresis: ["в нормі", "знижений", "дізурія"],
     suprapulmonaryBreathing: ["везикулярне", "жорстке"],
     percussionally: ["легеневий звук", "коробчатий звук"],
+    supraclavicularL_v: [
+        "справа",
+        "зліва",
+        "не збільшені",
+        "збільшені до  см",
+        "рухомі",
+        "нерухомі",
+    ],
 };
