@@ -12,7 +12,6 @@ const PatientSearch: FC<PatientSearchProps> = ({ changeInputValue }) => {
             <div className="flex items-center justify-center gap-4">
                 <Input
                     type="text"
-                    name="search"
                     placeholder="Пошук по прізвищу або імені"
                     onChange={changeInputValue}
                     className="w-80"

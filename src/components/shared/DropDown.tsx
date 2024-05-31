@@ -21,7 +21,7 @@ const DropDown: FC<DropDownProps> = ({
     className = "",
     label,
     error,
-    name = "Select",
+    name = null,
     disabled,
 }) => {
     return (
@@ -32,7 +32,7 @@ const DropDown: FC<DropDownProps> = ({
                 </label>
             )}
             <select
-                name={name}
+                name={name || ""}
                 className={`px-3 py-2 text-base text-[#344054] bg-white border border-[#d0d5dd] shadow-sm rounded-lg placeholder-[#667085]`}
                 onChange={onChange}
                 disabled={disabled}
@@ -47,7 +47,9 @@ const DropDown: FC<DropDownProps> = ({
                     </option>
                 ))}
             </select>
-            <p className={`mt-1 ml-3 text-sm font-normal text-red-500`}>{error || "\u00A0"}</p>
+            <p className={`mt-1 ml-3 text-sm font-normal text-red-500`}>
+                {error || name ? "\u00A0" : ""}
+            </p>
         </div>
     );
 };
