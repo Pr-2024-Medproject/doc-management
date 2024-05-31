@@ -11,7 +11,7 @@ interface PatientsProps {
 
 const Patients: FC<PatientsProps> = ({ patients }) => {
     const navigate = useNavigate();
-    const { setSelectedPatient } = useStore();
+    const { selectedPatient, setSelectedPatient } = useStore();
     const formInfo = getPatientDataFormInfo();
 
     const handleClick = (patient: Patient) => {
@@ -19,7 +19,13 @@ const Patients: FC<PatientsProps> = ({ patients }) => {
         navigate(`/doc-management/form/${formInfo?.id}`);
     };
 
-    if (patients.length === 0) return;
+    if (patients.length === 0) {
+        return (
+            <div className="flex justify-center items-center">
+                <p className="text-gray-500 text-lg">No patients available</p>
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col gap-4 pe-4 py-4 w-full bg-white rounded-md">
@@ -31,7 +37,7 @@ const Patients: FC<PatientsProps> = ({ patients }) => {
                     onClick={() => handleClick(patient)}
                     className={`text-lg font-medium rounded-md text-left ${
                         i % 2 === 0 ? "text-gray-900 bg-gray-100" : "text-gray-700"
-                    }`}
+                    } ${selectedPatient?.id === patient.id ? "border-2 border-stone-400" : ""}`}
                 />
             ))}
         </div>

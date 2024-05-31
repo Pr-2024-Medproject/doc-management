@@ -35,10 +35,7 @@ const ControlButtons: FC<ControlButtonsProps> = ({
 
     const currentForm = useFormInfo();
     const historyDates = useMemo(
-        () => [
-            "Оберіть дату",
-            ...getPatientHistoryDates(currentForm.key as HistoryFormsKeys, patient),
-        ],
+        () => getPatientHistoryDates(currentForm.key as HistoryFormsKeys, patient),
         [currentForm.key, patient],
     );
 
@@ -49,14 +46,15 @@ const ControlButtons: FC<ControlButtonsProps> = ({
                     <>
                         <Input
                             type="button"
-                            value="Or create new patient"
+                            value="Чи створити нового паціента"
                             disabled={false}
                             onClick={createNewPatientHandler}
                         />
                         {isPrintableForm(currentForm) && (
                             <DropDown
+                                defaultValue="Оберіть дату"
                                 values={historyDates}
-                                onSelect={(e) => historyDateHandler(e?.currentTarget.value || "")}
+                                onChange={(e) => historyDateHandler(e?.currentTarget.value || "")}
                             />
                         )}
                     </>
@@ -64,8 +62,13 @@ const ControlButtons: FC<ControlButtonsProps> = ({
             </div>
 
             <div className="flex gap-6">
-                <Input type="button" value="Save" disabled={disabled} onClick={saveCallback} />
-                <Input type="button" value="Print" disabled={disabled} onClick={printCallback} />
+                <Input type="button" value="Зберегти" disabled={disabled} onClick={saveCallback} />
+                <Input
+                    type="button"
+                    value="Згенерувати"
+                    disabled={disabled}
+                    onClick={printCallback}
+                />
             </div>
         </div>
     );

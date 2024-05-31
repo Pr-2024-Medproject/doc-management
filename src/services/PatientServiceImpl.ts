@@ -50,7 +50,8 @@ export function getPatientDocumentData(
         return { ...nullable, ...patient };
     }
     const history = patient.history[formKey].find((item) => String(item.date) === date) || nullable;
-    return { ...history, ...patient };
+
+    return { ...patient, ...history };
 }
 
 export function updatePatientArray(patients: Patient[], patient: Patient) {
