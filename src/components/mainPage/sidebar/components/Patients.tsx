@@ -11,7 +11,7 @@ interface PatientsProps {
 
 const Patients: FC<PatientsProps> = ({ patients }) => {
     const navigate = useNavigate();
-    const { setSelectedPatient } = useStore();
+    const { selectedPatient, setSelectedPatient } = useStore();
     const formInfo = getPatientDataFormInfo();
 
     const handleClick = (patient: Patient) => {
@@ -37,7 +37,7 @@ const Patients: FC<PatientsProps> = ({ patients }) => {
                     onClick={() => handleClick(patient)}
                     className={`text-lg font-medium rounded-md text-left ${
                         i % 2 === 0 ? "text-gray-900 bg-gray-100" : "text-gray-700"
-                    }`}
+                    } ${selectedPatient?.id === patient.id ? "border-2 border-stone-400" : ""}`}
                 />
             ))}
         </div>
