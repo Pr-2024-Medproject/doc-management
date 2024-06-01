@@ -18,7 +18,7 @@ const FormSection: FC<FormSectionProps> = (_props) => {
 
     useEffect(() => {
         if (isPrintableForm(formInfo) && !selectedPatient) {
-            navigate(`/doc-management/form/${dataForm?.id}`);
+            navigate(`/form/${dataForm?.id}`);
         }
     }, []);
 

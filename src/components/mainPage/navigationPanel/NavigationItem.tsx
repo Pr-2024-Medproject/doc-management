@@ -14,7 +14,7 @@ const NavigationItem: FC<NavigationItemProps> = ({ formInfo, disabled }) => {
     const highlightCurrent = current.id === formInfo.id ? "border-4 border-stone-400" : "";
 
     return (
-        <Link to={`/doc-management/form/${formInfo.id}`}>
+        <Link to={`/form/${formInfo.id}`}>
             <Input
                 type="button"
                 value={formInfo.name}

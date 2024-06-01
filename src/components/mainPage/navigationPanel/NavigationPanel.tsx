@@ -11,17 +11,13 @@ interface NavigationPanelProps {}
 const NavigationPanel: FC<NavigationPanelProps> = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const isMainPage = location.pathname === "/doc-management/";
+    const isMainPage = location.pathname === "/";
     const { selectedPatient } = useStore();
 
     return (
         <nav className="h-full p-4 flex justify-evenly">
             {!isMainPage && (
-                <Input
-                    type="button"
-                    value={"Перейти на головну"}
-                    onClick={() => navigate("/doc-management/")}
-                />
+                <Input type="button" value={"Перейти на головну"} onClick={() => navigate("/")} />
             )}
             {FORMS.map((info) => (
                 <NavigationItem

@@ -30,7 +30,7 @@ const ControlButtons: FC<ControlButtonsProps> = ({
 
     const createNewPatientHandler = () => {
         setSelectedPatient(null);
-        navigate(`/doc-management/form/${dataForm?.id}`);
+        navigate(`/form/${dataForm?.id}`);
     };
 
     const currentForm = useFormInfo();

@@ -9,7 +9,7 @@ const App = () => {
     const { patients } = useStore();
     return (
         <Routes>
-            <Route path="/doc-management/" element={<MainPage />}>
+            <Route path="/" element={<MainPage />}>
                 <Route index element={<PatientsTable patients={patients} />} />
                 <Route path="form/:formId" element={<FormSection />} />
             </Route>

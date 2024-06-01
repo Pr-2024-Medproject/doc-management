@@ -3,7 +3,7 @@ import { MedStatementModel } from "../types/models/MedStatement";
 import { HistoryFormsKeys } from "../types/models/History";
 
 export async function readTemplate(formKey: HistoryFormsKeys) {
-    const filePath = `/doc-management/assets/templates/${formKey}.docx`;
+    const filePath = `/assets/templates/${formKey}.docx`;
     const response = await fetch(filePath);
     if (!response.ok) {
         throw new Error("Network response was not ok");

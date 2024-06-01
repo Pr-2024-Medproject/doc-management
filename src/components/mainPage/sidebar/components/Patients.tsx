@@ -16,7 +16,7 @@ const Patients: FC<PatientsProps> = ({ patients }) => {
 
     const handleClick = (patient: Patient) => {
         setSelectedPatient(patient);
-        navigate(`/doc-management/form/${formInfo?.id}`);
+        navigate(`/form/${formInfo?.id}`);
     };
 
     if (patients.length === 0) {
