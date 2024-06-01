@@ -7,18 +7,17 @@ import {
 } from "../../../validation-schemas/MedStatementSchema";
 import { MedStatementModel } from "../../../types/models/MedStatement";
 import useCustomFormik from "../../../hooks/useCustomFormik";
-import { FormInfo } from "../../../types/Forms";
 import { Patient } from "../../../types/models/Patient";
 import { getPatientDocumentData, pushToPatientHistory } from "../../../services/PatientServiceImpl";
 import { FormsKeys } from "../../../constants/Forms";
+import { fillDocTemplate } from "../../../services/DocumentServiceImpl";
 
 interface FormMedStatementProps {
-    formInfo: FormInfo;
     patient: Patient;
     setPatient: (id: string, patient: Patient) => void;
 }
 
-const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo, patient, setPatient }) => {
+const FormMedStatement: FC<FormMedStatementProps> = ({ patient, setPatient }) => {
     const [initial, setInitial] = useState(
         getPatientDocumentData(FormsKeys.FORM_MED_STATEMENT, patient, null),
     );
@@ -39,9 +38,8 @@ const FormMedStatement: FC<FormMedStatementProps> = ({ formInfo, patient, setPat
             );
             setPatient(model.id, model);
         },
-        printCallback: (values, _helpers) => {
-            console.log(`Form ${formInfo.id} [${formInfo.name}] printed successfully.`);
-            console.log(`DATA => `, values);
+        printCallback: async (values, _helpers) => {
+            await fillDocTemplate(FormsKeys.FORM_MED_STATEMENT, values as MedStatementModel);
         },
     });
 

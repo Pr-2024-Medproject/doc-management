@@ -2,7 +2,6 @@ import { FC } from "react";
 import ControlButtons from "../../mainPage/controlButtons/ControlButtons";
 import FormInput from "../../shared/FormInput";
 import useCustomFormik from "../../../hooks/useCustomFormik";
-import { FormInfo } from "../../../types/Forms";
 import { Patient, PatientData } from "../../../types/models/Patient";
 import {
     patientDataFields,
@@ -11,12 +10,11 @@ import {
 import { createOrUpdatePatient } from "../../../services/PatientServiceImpl";
 
 interface FormPatientDataProps {
-    formInfo: FormInfo;
     patient: Patient;
     setPatient: (id: string, patient: Patient) => void;
 }
 
-const FormPatientData: FC<FormPatientDataProps> = ({ formInfo, patient, setPatient }) => {
+const FormPatientData: FC<FormPatientDataProps> = ({ patient, setPatient }) => {
     const { form, saveHandler, printHandler } = useCustomFormik<PatientData>({
         fields: patientDataFields,
         schema: patientDataSchema,
@@ -25,10 +23,7 @@ const FormPatientData: FC<FormPatientDataProps> = ({ formInfo, patient, setPatie
             const model = createOrUpdatePatient(values, patient);
             setPatient(model.id, model);
         },
-        printCallback: (values, _helpers) => {
-            console.log(`Form ${formInfo.id} [${formInfo.name}] printed successfully.`);
-            console.log(`DATA => `, values);
-        },
+        printCallback: (_values, _helpers) => {},
     });
 
     return (
