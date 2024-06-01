@@ -1,4 +1,4 @@
-# RCO Kharkiv document management
+# Kharkiv Regional Center of Oncology, document management
 
 ## React + TypeScript + Vite
 
