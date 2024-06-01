@@ -1,4 +1,4 @@
-# RCO Kharkiv
+# RCO Kharkiv document management
 
 ## React + TypeScript + Vite
 
