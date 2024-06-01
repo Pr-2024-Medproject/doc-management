@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import BurgerMenuIcon from "../../../../assets/burger-menu.svg";
+import BurgerMenuIcon from "/assets/burger-menu.svg";
 import SideBarData from "./components/SideBarData";
 
 interface SidebarProps {}
