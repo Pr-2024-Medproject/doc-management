@@ -16,7 +16,7 @@ const PatientsTable: React.FC<PatientTableProps> = ({ patients }) => {
     }
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mr-8">
             <table className="min-w-full bg-white border">
                 <thead className="bg-gray-200">
                     <tr>
