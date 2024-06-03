@@ -23,7 +23,7 @@ const FormSection: FC<FormSectionProps> = (_props) => {
     }, []);
 
     return (
-        <section className="flex flex-col h-full mr-8">
+        <section className="flex flex-col h-full px-8 pt-8">
             {formInfo.key === FormsKeys.FORM_PATIENT_DATA ? (
                 <FormPatientData
                     patient={selectedPatient || ({} as Patient)}

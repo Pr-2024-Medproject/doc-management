@@ -13,7 +13,7 @@ const Sidebar: FC<SidebarProps> = (_props) => {
 
     return (
         <aside
-            className={`flex flex-col h-full p-4 relative transition-all duration-300 ${
+            className={`flex flex-col h-full p-4 relative transition-all duration-300 shadow-2xl ${
                 isSidebarOpen ? "w-[40%]" : "w-20"
             }`}
         >

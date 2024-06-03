@@ -15,7 +15,7 @@ const NavigationPanel: FC<NavigationPanelProps> = () => {
     const { selectedPatient } = useStore();
 
     return (
-        <nav className="h-full p-4 flex justify-evenly">
+        <nav className="h-full p-4 flex justify-evenly shadow-md">
             {!isMainPage && (
                 <Input type="button" value={"Перейти на головну"} onClick={() => navigate("/")} />
             )}
