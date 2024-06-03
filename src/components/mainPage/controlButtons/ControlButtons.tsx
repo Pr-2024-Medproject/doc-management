@@ -1,13 +1,13 @@
 import { FC, useMemo } from "react";
 import Input from "../../shared/Input";
 import { useStore } from "../../../store";
-import { useNavigate } from "react-router-dom";
-import { getPatientDataFormInfo, isPrintableForm } from "../../../services/FormServiceImpl";
+import { isPrintableForm } from "../../../services/FormServiceImpl";
 import DropDown from "../../shared/DropDown";
 import useFormInfo from "../../../hooks/useFormInfo";
 import { Patient } from "../../../types/models/Patient";
 import { getPatientHistoryDates } from "../../../services/PatientServiceImpl";
 import { HistoryFormsKeys } from "../../../types/models/History";
+import CreateNewPatientButton from "../../shared/CreateNewPatientButton";
 
 interface ControlButtonsProps {
     disabled: boolean;
@@ -24,33 +24,23 @@ const ControlButtons: FC<ControlButtonsProps> = ({
     printCallback,
     historyDateHandler = () => {},
 }) => {
-    const navigate = useNavigate();
-    const dataForm = getPatientDataFormInfo();
-    const { selectedPatient, setSelectedPatient } = useStore();
-
-    const createNewPatientHandler = () => {
-        setSelectedPatient(null);
-        navigate(`/form/${dataForm?.id}`);
-    };
-
+    const { selectedPatient } = useStore();
     const currentForm = useFormInfo();
-    const historyDates = useMemo(
-        () => getPatientHistoryDates(currentForm.key as HistoryFormsKeys, patient),
-        [currentForm.key, patient],
-    );
+
+    const { historyDates, printableForm } = useMemo(() => {
+        return {
+            historyDates: getPatientHistoryDates(currentForm.key as HistoryFormsKeys, patient),
+            printableForm: isPrintableForm(currentForm),
+        };
+    }, [currentForm.key, patient]);
 
     return (
         <div className="flex justify-end p-4 pr-20 justify-self-end">
             <div className="flex flex-grow gap-6">
                 {selectedPatient && (
                     <>
-                        <Input
-                            type="button"
-                            value="Чи створити нового паціента"
-                            disabled={false}
-                            onClick={createNewPatientHandler}
-                        />
-                        {isPrintableForm(currentForm) && (
+                        <CreateNewPatientButton value="Чи створити нового паціента" />
+                        {printableForm && (
                             <DropDown
                                 defaultValue="Оберіть дату"
                                 values={historyDates}
@@ -63,12 +53,14 @@ const ControlButtons: FC<ControlButtonsProps> = ({
 
             <div className="flex gap-6">
                 <Input type="button" value="Зберегти" disabled={disabled} onClick={saveCallback} />
-                <Input
-                    type="button"
-                    value="Згенерувати"
-                    disabled={disabled}
-                    onClick={printCallback}
-                />
+                {printableForm && (
+                    <Input
+                        type="button"
+                        value="Згенерувати"
+                        disabled={disabled}
+                        onClick={printCallback}
+                    />
+                )}
             </div>
         </div>
     );
