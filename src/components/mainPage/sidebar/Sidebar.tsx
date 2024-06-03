@@ -16,6 +16,9 @@ const Sidebar: FC<SidebarProps> = (_props) => {
             className={`flex flex-col h-full p-4 relative transition-all duration-300 ${
                 isSidebarOpen ? "w-[40%]" : "w-20"
             }`}
+            style={{
+                boxShadow: "4px 0 15px -2px rgba(0, 0, 0, 0.1)",
+            }}
         >
             {isSidebarOpen && <SideBarData />}
 
