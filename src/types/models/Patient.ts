@@ -34,27 +34,27 @@ export interface PatientData {
     constitution: string;
     nutrition: string;
     dyspnea: string;
-    skin: string[];
-    heartSounds: string[];
+    skin: string;
+    heartSounds: string;
     pulse: string;
     AT: string;
     ChDR: string;
     tongue: string;
-    stomach: string[];
+    stomach: string;
     liver: string;
-    pasternackiSymptom: string[];
+    pasternackiSymptom: string;
     chair: string;
     diuresis: string;
 
     //Locus morbi (група для полей)
-    supraclavicularL_v: string[];
-    axillaryL_v: string[];
+    supraclavicularL_v: string;
+    axillaryL_v: string;
     suprapulmonaryBreathing: string;
-    breathShortness: string[];
+    breathShortness: string;
     percussionally: string;
-    dullness: string[];
-    wheezing: string[];
+    dullness: string;
+    wheezing: string;
 
     //Скарги (список)
-    complaints: string[];
+    complaints: string;
 }
