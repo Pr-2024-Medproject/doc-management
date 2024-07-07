@@ -19,11 +19,11 @@ const FormPatientData: FC<FormPatientDataProps> = ({ patient, setPatient }) => {
         fields: patientDataFields,
         schema: patientDataSchema,
         initial: patient,
-        saveCallback: (values, _helpers) => {
+        saveCallback: (values) => {
             const model = createOrUpdatePatient(values, patient);
             setPatient(model.id, model);
         },
-        printCallback: (_values, _helpers) => {},
+        printCallback: () => {},
     });
 
     return (

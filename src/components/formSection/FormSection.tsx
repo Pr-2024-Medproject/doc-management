@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 interface FormSectionProps {}
 
-const FormSection: FC<FormSectionProps> = (_props) => {
+const FormSection: FC<FormSectionProps> = () => {
     const formInfo = useFormInfo();
     const navigate = useNavigate();
     const dataForm = getPatientDataFormInfo();

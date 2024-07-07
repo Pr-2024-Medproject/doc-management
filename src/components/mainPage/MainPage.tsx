@@ -5,7 +5,7 @@ import NavigationPanel from "./navigationPanel/NavigationPanel";
 
 interface MainPageProps {}
 
-const MainPage: FC<MainPageProps> = (_props) => {
+const MainPage: FC<MainPageProps> = () => {
     return (
         <div className="flex items-center justify-center h-full w-full">
             <Sidebar />

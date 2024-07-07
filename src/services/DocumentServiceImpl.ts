@@ -30,5 +30,5 @@ export async function fillDocTemplate(formKey: HistoryFormsKeys, values: MedStat
         };
         return acc;
     }, {} as Record<string, IPatch>);
-    saveTemplate(await patchDocument(await readTemplate(formKey), { patches }), formKey);
+    await saveTemplate(await patchDocument(await readTemplate(formKey), { patches }), formKey);
 }

@@ -30,7 +30,7 @@ const FormMedStatement: FC<FormMedStatementProps> = ({ patient, setPatient }) =>
         fields: medStatementFields,
         schema: medStatementSchema,
         initial: initial,
-        saveCallback: (values, _helpers) => {
+        saveCallback: (values) => {
             const model = pushToPatientHistory(
                 FormsKeys.FORM_MED_STATEMENT,
                 values as MedStatementModel,
@@ -38,7 +38,7 @@ const FormMedStatement: FC<FormMedStatementProps> = ({ patient, setPatient }) =>
             );
             setPatient(model.id, model);
         },
-        printCallback: async (values, _helpers) => {
+        printCallback: async (values) => {
             await fillDocTemplate(FormsKeys.FORM_MED_STATEMENT, values as MedStatementModel);
         },
     });

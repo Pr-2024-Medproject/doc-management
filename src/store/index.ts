@@ -16,7 +16,7 @@ export const useStore = create<StoreState>()((set) => ({
     patients: getAllValues(),
 
     setSelectedPatient: (patient: Patient | null) =>
-        set((_state) => ({ selectedPatient: patient })),
+        set(() => ({ selectedPatient: patient })),
 
     savePatient: (key: string, value: Patient | (() => Patient)) => {
         try {

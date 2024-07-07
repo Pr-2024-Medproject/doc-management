@@ -6,7 +6,7 @@ import { filterPatients } from "../../../../services/PatientServiceImpl";
 
 interface SidebarProps {}
 
-const SideBarData: FC<SidebarProps> = (_props) => {
+const SideBarData: FC<SidebarProps> = () => {
     const { patients } = useStore();
     const [searchPattern, setSearchPattern] = useState<string>("");
 

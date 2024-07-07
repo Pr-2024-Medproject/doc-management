@@ -4,7 +4,7 @@ import SideBarData from "./components/SideBarData";
 
 interface SidebarProps {}
 
-const Sidebar: FC<SidebarProps> = (_props) => {
+const Sidebar: FC<SidebarProps> = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const toggleSidebar = () => {
